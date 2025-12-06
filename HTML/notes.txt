@@ -1,0 +1,267 @@
+1. Anything on website it's structure and formatting is decided by HTML. ( not style color fonts concerned)
+2. Formatting means : heading/italic, list, textbox, simply wireframe.
+
+HTML tells rules to browser about how to present our plane text 
+: Hyper text markup language
+
+
+View Page Source -------> code of Page
+Inspect ------> ?
+shortcut to nevigate out of tags -----> lt + Shift + Right
+
+HTML Elements 
+    --- standard elements which broser recognises ( paragraph, heading, image)
+    --- These elements are shown using tags
+
+Tags are containers for < content > ----> which can contain image, text etc.... a box kind of thing.
+
+[Tag Content /Tag] -----> makes a element
+
+what is extension of file and it's usage ---> ?
+
+
+HTML creates web page --- note website ( included many pages, frontent backend, databases etc)
+
+Paragraph element ---> used to display collection of content together ( text images ), single line. ( extra space or extra lines are ignored)
+
+Heading elements ---> <h1> < largest heading> ... <h6> ( smallest heading) ( every heading has their predefined default sizes)
+
+
+#### boiler plate code   ### shortcut write ! ---- this is done via emits in vs code.
+#### indentation < proper spacing >
+standard or skelton or writing some code.
+<!DOCTYPE html> <!-- tells about html version -->
+<html> <!-- root tag -->
+    <head> <!-- meta info or extra info like linking CSS or linking JS or extra info that is not displayed but needed -->
+        <title> page title </title> <!-- name of page, this is not displayed on page, but in tab, also google uses this for search query -->
+    </head>
+    <body>
+        <p> hello </p>
+    </body>
+</html>
+
+
+
+#### list element 
+# unordered ( bulleted)  ordered ( numbering )
+
+<ul> for list and then add items to listusing <li> 
+<ol type = 'A'/'a'/> for ordered list and adding item using <li>
+
+##### HTML attributes 
+
+attributes are used to add more information to tag.
+eg <html lang='en'> -----> lang is attribute tells language is english
+----- attributes elements can be in single or double quotes
+
+
+Anchor elements
+----> links using which we can move to some other part in page, some other page, some other site etc
+<a href='location to go' > Google </a>
+href ---> hyper link reference
+
+https -> protocol   www -> search on world wide web 
+
+we can give 2 type of links ---> absolute links or relative links. 
+
+
+
+
+Image elements 
+
+------ linking image to html pages 
+------ this is a single tag meaning it has no closing tag als <br> <hr>  these tags don't have content part.
+
+<img src='image path' alt="random_image" height = '10px' width = '20px'> 
+
+src ---> relative or absolute path 
+alt ---> in case image loading fails we show this alternate path.
+
+
+As html doesn't add extra lines in doc, we need extra space, for that we uses 
+<br> ------> line break , thi has no closing tag
+
+
+Text highlighters 
+
+<b> </b>
+<i> </i>
+<u> </b>
+
+
+Comments in HTML, things inside comments are not executed to affect HTML doc, meaing part which is not parsed
+
+<!-- comment -->
+
+
+HTML IS NON CASE SENSITIVE meaning tags can be written in any case
+
+Cateogry of HTML elements : 
+
+inline/block elements
+
+block elements ----> elements that occupies wholw width whenever they are used
+     ----> occupy whole width irrespective of their actual width
+     ----> they starts from new line
+
+Inline elements -----> takes only necessary width
+    -----> doesn't start from new line
+
+
+eg : 
+Heading ---> block element
+Paragraph --> block element ( also used if we want 3 things in line, we uses 3 paragraphs they'll come in 3 different lines)
+            ---> that way we can avoid using <br>
+Anchor -----> Inline element --> takes space only what it needs
+Image ---> Inline element --> only takes what required, it can be used in something like adding picture within text as it's inline.
+
+
+
+Div element -------------- content division elements
+    ---- doesn't have any functionality, just used a container to combine different elements,
+    ---- it's a block element
+
+------ so classifying things in a row, or making new line after some collection, div can be used.
+
+
+Span elements 
+    ------- similar to div element, group together things, and also have no functinality of their own
+    ------- it's a inline element
+
+HR --- horizonal rule tag
+
+    ---- just a ruler line, single tag no opening closing, it is visible instead br just adds line without any visible thing
+
+Sub & Sup tags
+  ---- creating subscript and super scripts inside text, just a text beautification tag like bold/italic/underline
+
+
+
+
+
+
+Semantic markup tags : 
+it is the markup that relates to the meaning of content 
+
+eg h1 ---> tells we have heading, or <img> tells we have image
+but incase of <div> <span> are something which are not having meaning to them.
+we have more sementic tags like <header> <footer> ---> these tags are similar to div, but they give more sementic meaning to tags
+
+
+----- makes code more meaningful and layout more structured
+----- makes it SEO friendly, search engine optimisation.
+----- makes code redable, for people who are using screen reader
+
+by default : we makes single header/main/footer/nav in our website
+---- also they don't have any properties associated with them.
+
+<header> --- top part of our website
+<main>      
+<footer> ---- contacts  or some important links etc are added using this
+<nav> ---- used for navigation, meaning if we are going to add some webpage in our page, we uses nav tag.
+<article> --- 
+<section> -- to group together related content ( it's just more sementic that div tag)
+<aside> --> linking some thing which are not directly related to our website 
+        --> indirectly related things
+        --> browser knows this is not main content of our website, but indicrectly related
+
+
+
+HTML entities : 
+
+eg &lt --> used for < symbol.
+    html doesn't allow multiple spaces ( coverted to single space only) instead use &nbsp ( non breaking space)
+
+pice of text -> start with & -> and ends iwth ;
+
+used to display reserved characters ( which would otherwise be interpreted as html code), and invisible characters ( non-breaking space)
+
+can lso be used to write characters which can't be written using keyboard etc &hearts;
+
+Browser intreprets them, & render correct character 
+eg &amp; &lt; &gt; &quot; 
+entity names ---> lt, gt, amp etc...
+
+Each of these characters have their unicode , using unicode we can display &&#9733; ---> represents *.
+
+
+EMMET : 
+sets of related plugins
+essential toolkit for web-deveoper 
+----> eg ! + enter ====== will generate boilerplate HTML code.
+
+
+check docs.emmet.io/cheat-sheet 
+
+representing child using > 
+meaning p->div , creates paragraph and div inside it.
+
+sibling using + 
+    p + div creates 2 tags 
+
+climbing up 
+    div+div>p>span+em^bq
+
+Multiplication creating some element many times
+li*5
+
+
+A Bit more understanding of HTML5
+
+HTML5 is collection of modern web technologies
+this includes HTML living standard , along with JS APIs to enhance storage, multimedia and hardware access
+
+HTML works via
+HTML standards, which is a document that tells browser how HTML should work.
+
+it's a living standard, meaning it changes time to time.
+
+
+
+HTML tables 
+eg--- attendance table etc...
+
+characterstics of table ---- rows/colms
+------------> such lines are called row1
+------------> row2 
+
+Table has header ( headings of columns)
+
+<table>
+    <caption> Table Caption </caption>  ---- or it's a table title, or photo text that describes what is photo about
+    <tr>
+        <th> head1 </th> ( single cell meaing 1 row and 1 colm)
+    </tr>
+    <tr> 
+        <td> data1 </td>
+    </tr>
+
+so we mostly need <tr> tag, then td/th tags
+
+
+sementic tags in table
+
+<thead> ----> wraps table header
+<tbody> ----> wraps table body
+<tfoot> ----> wraps table footer ( eg when we are calculting some sum/average etc results)
+
+
+
+colspan & rwospan
+span meaning how many rows/column a cell going to occupy
+default span = 1row 1col
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
