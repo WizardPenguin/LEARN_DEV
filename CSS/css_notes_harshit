@@ -1,0 +1,77 @@
+1. how to take fonts 
+
+fonts.google.com ----> select-style ----> embed ----> copy the link ----> paste in html file in head section
+use that in CSS file,
+or just directly import in CSS
+
+
+font-size : 
+
+default : 16px...
+line-height : 
+word-spacing : 
+letter-spacing : 
+font-weight : ( only those available which are downloaded from google fonts)
+
+
+box model : 
+
+border : top/bottom left/right type color 
+    or : top right bottom left ( top clockwise)
+
+padding : content vs border 
+margin : border vs outside
+
+margin collapse : when two margins meet, the larger margin is applied
+
+display :
+
+block level elements gets height width margin padding 
+
+inline elements only get padding margin that too only left and right 
+
+inline-block : behaves like inline but gets height width margin padding
+
+
+
+specificity : !important > inline style > id > class > element
+
+default styles which can be removed by unversal selector 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+CSS inheritance : some properties are inherited by default like font-family color etc but some are not like margin padding border etc
+
+
+box-sizing : content-box (default) vs border-box (includes padding and border in width and height)
+
+pseudo-classes : hover active visited first-child last-child nth-child etc
+specifices some state of element 
+
+
+LVHA order is required....
+:link ---- links that hasn't been visited 
+:visited ----- when we have visited that link
+:hover ---- going over link
+:active ---- when link is clicked, can be used with anyting, so we can observe in button
+
+pseudo-classes with input : 
+:focus ---- when input box is selected
+:checked ---- when checkbox or radio button is selected
+:disabled ---- when input box is disabled
+:enabled ---- when input box is enabled
+:recquired ---- when input box is required ( this can be given in HTML, and similarly access in CSS)
+
+:nth-child(n) ---- selects nth child of parent ( can be even odd etc too)
+:first-child ---- selects first child of parent
+:last-child ---- selects last child of parent   
+:nth-of-type(n) ---- selects nth child of parent of same type
+:first-of-type ---- selects first child of parent of same type
+
+p:first_child --- selects p which is first child of parent( p should be first child)
+p:first-of-type ---- selects first p of parent ( even if its not first child)
+
+

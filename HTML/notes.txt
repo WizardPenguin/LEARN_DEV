@@ -253,6 +253,462 @@ default span = 1row 1col
 
 
 
+Forms in HTML : 
+to take user data and submit it somewhere
+
+<form action=? > ----- action tells where to send data from form.
+
+form has contents ------ Input/Select/Buttom/Textarea etc....
+
+<input /> --- it's a single tag no open and close
+
+<input type = "text/number/check-box/date/time/color...etc" placeholder="" name = "" value="default value">
+
+text ---> to write text
+number ---> also shows up/down buttom, and only take digits
+date/time/color/image/password --> it also gives us input box where we can easily fill values by choosing from them
+** without name nothing will be sent when we click on submit
+** Name is used to identify for which are we going to give data.
+
+placeholder --> text which is shown before entering value, and disapperas when we start writing in that input. 
+
+**** lables ---- used as for captions some elements.
+let's say we want to attach it to some input
+
+ways to attach : 
+<lable>
+
+<input /> 
+
+</lable>
+
+2nd way to attach classical approach : 
+
+<input type='text' id="unique for each element given by us" >
+<lable for = "id given to input to which we want to attach it"> lable text </lable>
+
+
+
+Buttom ------> to trigger some action
+
+<buttom> text inside buttom </buttom>
+
+any buttom created inside form by default behaves as submit button 
+If button outside form, then we have to explicity assign some action to them.
+also if we assign it a submit type, it won't be able to do something as don't know what to submit etc.
+
+type in buttom -> "submit"/"button ( meaning do nothing but look button)"/"rest"
+
+
+Button using input element ----> not advisable
+
+<input type='submit/button/reset'/>  ---> shows some button, but nothing written there
+when type = submit ---> it auto shows text/value=submit
+value---- will give a default value also work for button
+
+
+
+Name --- when we submit it sennds name=value? attributes to server or any link passed as action
+this is inportant as without it it cant be sent over link
+
+
+checkbox : they are ones which can be ticked and multiple at once are allowd
+
+type = "checkbox" checked ---- to click it as default
+type = 'radio' .....
+
+
+<div>
+    <input type = "radio" name = "fruit" id = "apple" >
+        <lable for ="apple"> apple < /lable>
+    
+    <input type = "radio" name = "fruit" id = "banana" >
+        <lable for ="banana"> banana < /lable>
+since their name = "fruit" they are connected and only one can be clicked at a time.
+
+
+but we don't have any value yet to identify/distinguish their click
+so add a attribute value to them... as by default it will go like fruit = 'on'
+
+
+if we do something similar with check-box 
+
+they can be grouped meaning now many values can go under same name 
+    like fruit=apple+banana?... like this
+
+
+
+Dropdown --> created using select
+
+<select name = "profession" id="profession>
+    <option value="SDE" selected> Sofwtare enginer </option>
+value is what passed on link
+we can have some option selected
+
+min/max will act as value attribute here, if not specified nothing goes to server
+<input type = 'range' min='0' max='100' step='10'>
+
+
+
+text_area 
+<lable for='text"> text area <lable>
+<textarea id = "text" name = feedback rows="?" cols = "?" >
+
+
+
+
+css --- cascading style sheets ( a doc for styling)
+text color background color etc.... properties
+
+
+format : 
+we have a selector : h1 ( anything with h1 tag wiould get this properties)
+Property ---> which thing to be changed
+value ----> to what value property to be changed 
+semicolor --> terminator should be there 
+
+
+h1 { 
+    color:red;
+}
+
+Including CSS inside HTMl.
+
+1. inline styling
+
+*** check if all heading changes color 
+<h1 style="color"red"> example </h1>
+
+2. using Style Tag inside head or explore
+used to get CSS for single HTML tag 
+
+<style>
+    h1 {
+        color:red;
+    }
+</style>
+
+3. external style sheet
+    can be included in many HTML files 
+
+we uses link tag in HEAD ( explore only in head or not)
+
+<head>
+    <link rel="stylesheet" ref="style.css">
+</head>
+
+
+properties : : : : : : 
+
+1. color ---> this is to set foreground color ( meaning thing that looks inside a element, extra speace except that is marked a background)
+2. background-color ---> 
+3. background ----> can also set color but with more features like including imgae in background.
+
+
+color system in CSS : 
+1. named color : eg black,blue ( around 140 named colors are there)
+2. RGB color system : rgb(0,255,0) 
+3. Hexadecimal color system : #ffffff ( same as rgb but we write in hex) , short form to write is 0f0 ---- 00ff00
+
+
+text properties : 
+text-align : left/right/centering text in a element ( aligns us in accordance to parent), default (left align) 
+            in first version (left/right/center was there)
+            in latest CSS3 ---> new were start/end were added similar to left/right but they are language dependent
+        Justify ------ meaning increase spaces between text to get them horizontally aligned
+
+font-weight : bolding/lightering
+        100-900
+        normal value = 400, it can also be set using text normal.
+        bold -- 700
+        bolder and lighter used in relation with parent
+        based on outer element we increase/decrease current elements font weight 
+
+
+text-decoration : underline, overline, linethrough
+    apperiance of decorative lines in text
+    text-decoration-color ---------- either separate or <red underline>
+    text-decoration-style ------ solid/wavy/dotted/double underline red
+
+    set it to none to delete everything, then we can write our own
+
+
+line-height : distance between rows of text
+    controls hight of line of text
+    eg normal
+    or 2.5 ----> meaning 2.5 time normal.
+
+we have other types also where we write in nm, or pixels etc
+
+
+letter-spacing : space between letters
+    px -> pixels is unit for letter spacing 
+    letter-spacing=10px  or normal. 
+
+
+font-size : size of font in CSS
+units
+    1 inch has 96 pixels 
+    absolute : px ---- not suitable for responsive websites 
+               pt pc cm mm in
+    relative :  %  -------
+                em ------- current sizes relation
+                rem ----- parent size relation
+
+font family : 
+    times new roman --- general format
+    specifies a prioritized list of one or more font family names
+    avant garde, arial, 
+    cssfontstack.com 
+    families -> serif sans-serif fantacy etc...
+
+
+
+Selector : 
+
+universal selector === *
+element selector === h1,h2 {}
+
+ID selector === #ID_NAME 
+-- ids are case SENSITIVE
+-- advisable to keeep ID's unique
+
+Class selector === give a class attribute to a element, multiple classes can also be given
+give some properties to class
+and add this class to HTML element, so it inherits that property
+
+we can give them to multiple different type of element, so no restiction on having same type of elements
+.class {
+    property=value;
+}
+
+
+descendents selector ----- never looks for direct child it can be at any level child
+
+given by space 
+
+div p {
+    meaning only p with div as parent
+    p inside div only.
+}
+
+Adjacent sybling combinator ( multiple selectors used in combination)
+eg + (adjacent) 
+
+all H3 which are immediately after p.
+
+p + h3 { 
+
+}
+
+child combinator (>)
+
+span > button 
+
+meaning buttons inside span  
+
+attribute selector :::::::::
+
+input[attr='value']{
+
+}
+
+input[type] ---- input that have type in it
+
+
+eg input of type text be colored in some way
+
+
+
+question : div id = myid and all para inside it needed to be colored green 
+class/id are attributes 
+
+div[id='myid'] p { color = green;}
+
+#myId p
+
+
+Pseudo class ( a specific keyword/state added to element)
+element:pseudoclass
+
+: hover ---- coursor  moved over element
+
+: active --- when clicked 
+
+:checked --- for radio button or checkbox 
+
+input[type='radio]:checked + label {
+    change properties of label when input checked
+}
+
+.post:nth_of_type(2){ 2nd 
+    background color changing : 
+}
+
+if we want all 2nd 4th ... etc from top, works among siblings of same type.
+.post:nth_of_type(2n) {
+    every even div's background changed 
+}
+
+pseudo elements ------- changing some specific part of element 
+
+::pseudo-element ( single colon also workss)
+
+::first-letter {
+    changign tyling of first letter inside element.
+}
+
+::first-line 
+
+::selection --- when portion selected then change property...
+
+
+what is cascading---- algorithm of CSS that defined in which priority properties are applied.
+
+things written in last is applied ( when selector is same)
+
+if selector is not same ( we have a specificity algorithm) :
+
+specificity value is a 3 digit number : 
+100th place 10th place 1th place
+
+eg : 
+
+id class/attribute/pseudo-class pseudo-element/element 
+
+their counts are calculated, so if Id used, 100th place makes lots of difference, so ID matters mostly
+
+id > class > element 
+
+h2 { 
+    yellow; ------ 0 0 1(element + 0 pseudo element) ---- 001
+}
+
+.myClass:hover{
+    yellow: ----- 0 (1 id + 1 pseudo-class) ---- 020
+}
+
+so more specific we are more chances of that property to be applied......
+
+more selectors usage is considered better as it gives more priority......
+
+
+
+
+Inline specificity ::::: 
+when style is given inline meaning in HTML itself...... highest priority ( 1000th place)
+
+
+
+!important ---- used to show/define most specific thing in CSS
+this is importnat that inline style.... can't ever be changed after this
+h2 {
+    background-color: anitquewhite; !importnat;
+}
+
+
+
+Inheritence ::::
+parent's properties goes to children side ( qualities ).
+
+div -> p -> li 
+
+if div background changed ----> then li's background also changes...
+
+
+we can also explicitly write this
+background_color : inherit; ---- then it takes background from parent 
+input and button doesn't inherit, we need to write it explicitly....
+
+
+some properties doesn't inherit by default 
+eg width height border......
+
+
+CSS box mode :::: 
+
+h2 {
+    border: 4px solid red; ---- to change border in inspect, click on it, and press up arrow to increase.
+}
+border-width, brder-style, border-color, border-bottom, border-top, border-radious 
+
+
+
++-----------------------------+
+|         Margin             |   ← Outside spacing
++-----------------------------+
+|         Border             |   ← Visible border edge
++-----------------------------+
+|         Padding            |   ← Inner spacing
++-----------------------------+
+|         Content            |   ← Text / image / element
++-----------------------------+
+
+default : box-sizing: content-box; ------ width + padding(left&right) + border(left&right) + margin(left&right)
+
+better : box-sizing: border-box; ---- width includes padding + border, just margins are extra spacing outside boundary kind.
+
+
+padding ==== border<---> content
+margin ==== border<----> outside world
+
+
+values given like 
+
+margin : all
+margin : top/bottom left/right 
+margin : top bottom left right....
+
+margin : 20px auto; ( makes our element centered w.r.t left/right....) , gien we have a fixed width...
+
+
+margin collapsing 
+
+margin meaning elements tries to keep distance from each other, so if both have some marging and are near to each together
+then mearging which is greater will be applied, simple..
+
+
+*** inline elements : doesn't have top bottom margin,,,,,, they just have left right margin...
+*** padding in inline elements can cross over other elements.... irrespective of other's margin etc.... overflow foud...
+     left right paddings can be good....
+
+    
+converting elements inline<>block
+display : inline/block....etc
+
+
+Image tag ( inline block element....) margin and paddings all works good there..... no issue...
+
+eg ... <a> is a inline element
+margin top/bottom doesn't work, padding top/bottom causes overlapping..
+There height and width are not controllable.....
+
+if display:inline-block....
+
+then we can give margin,border.... but they keep in same line....(unlike block elements..)
+
+
+browser gies some default margin to body of 8px..... 
+such default styles are given by browser how to reset them ? 
+
+* {
+    margin:0
+    padding:0
+    border-sizing:border-box;
+}
+
+
+
+UNITS : 
+% ---- percentage of size of parent 
+width = 33.3%
+margin-left = 50% ( of size of parent.)
+
+
+
+
+
+
 
 
 

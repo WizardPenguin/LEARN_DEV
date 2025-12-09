@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe</title>
+</head>
+<body>
+    <form action="/subscribe">
+        <div>
+            <lable for ='name'> Name </lable>
+            <input type="text" id="name" name="name">
+        </div>
+        <div>
+            Sex:
+            <input type="radio" id="male" name="sex" value="male">
+            <lable for ='male'> Male </lable>
+            <input type="radio" id="female" name="sex" value="female">
+            <lable for ='female'> Female </lable>
+        </div>
+        <div>
+            <lable for ='country'> Country </lable>
+            <select name="country" id="country">
+                <option value="india" select> India </option>
+                <option value="usa"> USA </option>
+                <option value="uk"> UK </option>
+            </select>
+        </div>
+        <div>
+            <div>
+                <label for="message"> Message </label>    
+            </div>
+            <textarea name="message" id="message" ></textarea>
+        </div> 
+        <div>
+            <input type="checkbox" id="subscribe" name="subscribe">
+            <label for="subscribe"> Subscribe? </label>
+        </div>
+        <div>
+            <button type="submit"> Submit </button>
+        </div>
+    </form>
+</body>
+</html>
