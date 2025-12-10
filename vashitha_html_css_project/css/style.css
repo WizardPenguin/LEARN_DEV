@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.header {
+    height : 95vh;
+    /* we need linear gradient with opacity */
+    background : linear-gradient(rgba(0,0,0,.5), rgba(0, 0, 0, 0.5)), url(../img/header-image.jpg);
+    /* that way center is prioritixed when image not fitting and need corpping */
+    background-position : center;
+    background-repeat: no-repeat;
+    /* now if background is not going to repeat, if we went more than image size it should fill it */
+    /* meaning original size of image is going to change to make it fill whole... */
+    background-size: cover;
+    border : 2px solid black;
+}
