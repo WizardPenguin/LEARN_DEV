@@ -6,9 +6,69 @@
     box-sizing: border-box;
 }
 
+/* some basic settings of fonts and font-sizes */
+
 body {
     font-family: 'Montserrat', sans-serif;
+    line-height: 1.7;
+    font-size: 62.5%;
 }
+
+h1,h2,h3 {
+    /* whatever size of font, we have margin dependent */
+    margin-bottom: .5em;
+    letter-spacing: .15em;
+    font-weight: 500;
+}
+
+ul li {
+    list-style: none;
+}
+
+p, li, a {
+    font-size: 1.6rem;
+    margin-bottom: .5em;
+    letter-spacing: .15rem;
+    /* 50% of font size, better depend on font size so if using mobile font decreases, margin too */
+}
+
+
+.container {
+    /* it gives scrollbar if we do width:1200 also max-width is problematic as no margin left */
+    max-width: 1200px;
+    /* that's why we do this so if < 1200 then it'll leave margin */
+    width: 90%;
+    margin : 0 auto; 
+    /* so that it will be in center of container */
+}
+
+/* utility classes, styles being used again and again , they have minimal settings*/
+.lg-heading {
+    font-size: 3.5rem;
+}
+
+.md-heading {
+    font-size: 2.5rem;
+}
+
+/* since we are reusing many colors we can create utility */
+.text-red {
+    color: #e63946;
+}
+
+.text-light {
+    color : #f4f4f4;
+}
+
+.text-black {
+    color : #333;
+}
+
+.text-gray {
+    color : #555;
+}
+
+
 
 .header {
     height : 95vh;
@@ -20,5 +80,47 @@ body {
     /* now if background is not going to repeat, if we went more than image size it should fill it */
     /* meaning original size of image is going to change to make it fill whole... */
     background-size: cover;
-    border : 2px solid black;
+    /* border : 2px solid white; */
+}
+
+.nav {
+    /* giving margin top to nav, will pull down whole body, as it'll try to make margin for nav */
+    /* margin : 1.5em 1em; */
+    text-align: center;
+    padding: 2em;
+}
+
+.logo {
+    float : left;
+}
+
+.nav-items {
+    float : right;
+}
+
+.nav-item {
+    list-style: none;
+    display: inline-block;
+    margin: 1em;
+}
+.nav a {
+    text-decoration: none;
+    text-transform: uppercase;
+     /*little space for underline  */
+    padding-bottom: .3rem;
+}
+
+.nav a:visited,
+.nav a:link {
+    color: #f4f4f4;
+}
+
+.nav a:hover{
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.nav::after{
+    content : "";
+    display: block;
+    clear : both;
 }
