@@ -6,12 +6,15 @@
     box-sizing: border-box;
 }
 
+:root {
+    font-size: 62.5%;
+}
+
 /* some basic settings of fonts and font-sizes */
 
 body {
     font-family: 'Montserrat', sans-serif;
     line-height: 1.7;
-    font-size: 62.5%;
 }
 
 h1,h2,h3 {
@@ -68,6 +71,18 @@ p, li, a {
     color : #555;
 }
 
+.btn {
+    display: inline-block;
+    padding: .5em 1.5em;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin: .5em 0;
+}
+
+.btn-primary{
+    background-color: white;
+    border-radius: 10rem;
+}
 
 
 .header {
@@ -81,6 +96,7 @@ p, li, a {
     /* meaning original size of image is going to change to make it fill whole... */
     background-size: cover;
     /* border : 2px solid white; */
+    position: relative;
 }
 
 .nav {
@@ -124,3 +140,28 @@ p, li, a {
     display: block;
     clear : both;
 }
+
+/* ############### header content ############## */
+.header-content{
+    margin: auto;
+    text-align: center;
+    /* border: 1px solid red; */
+    position : absolute;
+    top : 50%;
+    left : 50%;
+    transform: translate(-50%,-50%);
+    background: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.2));
+}
+
+.header-content h1, .header-content p, .header-content a{
+    text-transform: uppercase;
+}
+
+.header-content h1 {
+    font-weight: 700;
+}
+
+.header-content p {
+    font-weight: 700;
+}
+
