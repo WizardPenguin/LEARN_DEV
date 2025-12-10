@@ -65,6 +65,9 @@ pseudo-classes with input :
 :enabled ---- when input box is enabled
 :recquired ---- when input box is required ( this can be given in HTML, and similarly access in CSS)
 
+
+they work w.r.t parent. 
+
 :nth-child(n) ---- selects nth child of parent ( can be even odd etc too)
 :first-child ---- selects first child of parent
 :last-child ---- selects last child of parent   
@@ -74,4 +77,30 @@ pseudo-classes with input :
 p:first_child --- selects p which is first child of parent( p should be first child)
 p:first-of-type ---- selects first p of parent ( even if its not first child)
 
+
+:not(selector) ---- selects everything except that selector.. 
+
+body :not(p) --- inside body everything not p 
+
+:empty ---- selects elements which have no children ( including text nodes)
+
+
+
+pseudo-elements : ::before ::after ::first-letter ::first-line etc
+they create virtual elements inside selected element
+
+::before ---- creates virtual element before content of selected element
+::after ---- creates virtual element after content of selected element
+::first-letter ---- selects first letter of selected element
+::first-line ---- selects first line of selected element
+::selection ---- selects the portion of element which is selected by user
+
+
+this is inside p, but before any of content of p.
+p::before{
+    content:"Hello ";
+    if we make it's display block, then it's just a new element before it, which can have anything.
+}
+
+image,br,input,hr are self closing, and cannot have ::before and ::after pseudo elements.
 

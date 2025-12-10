@@ -1,0 +1,216 @@
+1. how to take fonts 
+
+fonts.google.com ----> select-style ----> embed ----> copy the link ----> paste in html file in head section
+use that in CSS file,
+or just directly import in CSS
+
+
+font-size : 
+
+default : 16px...
+line-height : 
+word-spacing : 
+letter-spacing : 
+font-weight : ( only those available which are downloaded from google fonts)
+
+
+box model : 
+
+border : top/bottom left/right type color 
+    or : top right bottom left ( top clockwise)
+
+padding : content vs border 
+margin : border vs outside
+
+margin collapse : when two margins meet, the larger margin is applied
+
+display :
+
+block level elements gets height width margin padding 
+
+inline elements only get padding margin that too only left and right 
+
+inline-block : behaves like inline but gets height width margin padding
+
+
+
+specificity : !important > inline style > id > class > element
+
+default styles which can be removed by unversal selector 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+CSS inheritance : some properties are inherited by default like font-family color etc but some are not like margin padding border etc
+
+
+box-sizing : content-box (default) vs border-box (includes padding and border in width and height)
+
+pseudo-classes : hover active visited first-child last-child nth-child etc
+specifices some state of element 
+
+
+LVHA order is required....
+:link ---- links that hasn't been visited 
+:visited ----- when we have visited that link
+:hover ---- going over link
+:active ---- when link is clicked, can be used with anyting, so we can observe in button
+
+pseudo-classes with input : 
+:focus ---- when input box is selected
+:checked ---- when checkbox or radio button is selected
+:disabled ---- when input box is disabled
+:enabled ---- when input box is enabled
+:recquired ---- when input box is required ( this can be given in HTML, and similarly access in CSS)
+
+
+they work w.r.t parent. 
+
+:nth-child(n) ---- selects nth child of parent ( can be even odd etc too)
+:first-child ---- selects first child of parent
+:last-child ---- selects last child of parent   
+:nth-of-type(n) ---- selects nth child of parent of same type
+:first-of-type ---- selects first child of parent of same type
+
+p:first_child --- selects p which is first child of parent( p should be first child)
+p:first-of-type ---- selects first p of parent ( even if its not first child)
+
+
+:not(selector) ---- selects everything except that selector.. 
+
+body :not(p) --- inside body everything not p 
+
+:empty ---- selects elements which have no children ( including text nodes)
+
+
+
+pseudo-elements : ::before ::after ::first-letter ::first-line etc
+they create virtual elements inside selected element
+
+::before ---- creates virtual element before content of selected element
+::after ---- creates virtual element after content of selected element
+::first-letter ---- selects first letter of selected element
+::first-line ---- selects first line of selected element
+::selection ---- selects the portion of element which is selected by user
+
+
+this is inside p, but before any of content of p.
+p::before{
+    content:"Hello ";
+    if we make it's display block, then it's just a new element before it, which can have anything.
+}
+
+image,br,input,hr are self closing, and cannot have ::before and ::after pseudo elements.
+
+
+Units ::::
+
+absolute units : cm mm in px pt pc
+
+1inch == 96px/1in
+      == 2.54cm
+
+1px = 0.75pt... so pt is a small unit
+
+relative units : % em rem vw vh vmin vmax ch ex
+
+% : relative to parent element ( eg font-size = 100% == 16px as default font size is 16px)
+
+eg width : 50% ---- means 50% of parent width, if margin auto, then it will center the element
+
+rem : relative to root element font size ( html element font size)
+root is html and default at 16px so 1rem == 16px 
+or we can change html font size to 10px, then 1rem == 10px..
+better font-size : 62.5% .... makes it changable with user settings.. 
+
+
+
+em : relative to current element font size 
+if used with font size : 
+    parent font size : 16px
+    current element font size : 20px
+    child element font size : 2em == 40px ( 2 * 20px)
+it's good, if we changes font size inside some element, then it's other properties also change accordingly.
+
+
+for font size : rem is better, for other properties em is better.
+for padding/margin : em is better. as they adjusts according to font size of element.
+layouts, meaing keep left or right etc ... : % works good. 
+
+vw, vh : relative to viewport width and height eg 100vw == viewport width ( independent of parent)
+vmin, vmax : relative to minimum and maximum of viewport width and height
+
+used in responsive website design. where our layout changes according to viewport size( mobile, tablet, desktop etc)
+
+
+FLOATS AND CLEARING : 
+float : left right none etc
+when we float an element, it comes out of normal flow, and other elements comes up to fill that space.
+so to avoid that we use clear property.
+
+let's we have a div with float left, and some text after that div.
+the text will come up to fill the space of div. ( text starts from right... till left element ends, and then normal space taken to fill doc)
+so to avoid that we use clear property on that text element.
+
+
+that extra thing needs to be cleared is called "float drop"
+so we can use clear:left/right/both/none
+to avoid that float drop, we can use clear:both on that element.
+then element will start after floating elements ends, and take full width.
+
+
+and best way is to have a empty element inside parent div after floating elements with clear:both
+we can do it via after pseudo element also. that way everything will look inside parent as whole area will be covered.
+
+:after{
+    content:"";
+    display:block;
+    clear:both;
+}
+
+
+CSS positions : static relative absolute fixed sticky
+static : default position, normal flow
+relative : relative to it's normal position, can use top left bottom right to move it from normal position
+absolute : relative to nearest positioned ancestor ( non static) , if none then relative to document body
+fixed : relative to viewport, stays in same position even on scroll
+sticky : behaves like relative until a certain scroll position, then behaves like fixed 
+
+
+relative : with left/right/top/bottom it moves x pixesl from it's original position, but still occupies same space in normal flow.
+changing it like this and moving can move it over other elements... 
+but other elements keep it's space as it was in normal flow.
+
+absolute : with left/right/top/bottom it moves x pixels from nearest positioned ancestor.
+it comes out of normal flow, so other elements comes up to fill that space.
+if no positioned ancestor, then relative to document body.
+    so we need to give relative to parent, so this element moves w.r.t that parent only.
+
+parent {
+    position:relative;
+}
+child {
+    position:absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);  // to center exactly
+    // translate moves element w.r.t it's own size.
+}
+
+fixed : with left/right/top/bottom it moves x pixels from viewport.
+it comes out of normal flow, so other elements comes up to fill that space.
+it stays in same position even on scroll.
+so used in navbars, back to top buttons etc.
+
+z-index : controls stacking order of elements.
+only works on positioned elements ( non static)
+higher z-index means element will be on top of lower z-index elements.
+if same z-index, then later in code will be on top.
+
+
+sticky : with top/bottom it moves x pixels from viewport when we scroll past it.
+until that point it behaves like relative, after that point it behaves like fixed.
+so used in sticky navbars etc.
+if disappears when it's container is out of view.
