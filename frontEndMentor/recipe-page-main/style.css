@@ -1,5 +1,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Young+Serif:wght@400&family=Outfit:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Outfit:wght@100..900&display=swap');
+
+:root {
+    font-size : 62.5%;
+}
 
 * {
     margin: 0;
@@ -8,90 +13,168 @@
     font-family: 'Outfit', sans-serif;
 }
 
-li{
-    text-indent: 1rem;
-    margin : 10px 40px;
+/* ############################################ utility classes #################################### */
+
+/* - White: hsl(0, 0%, 100%)
+
+- Stone 100: hsl(30, 54%, 90%)
+- Stone 150: hsl(30, 18%, 87%)
+- Stone 600: hsl(30, 10%, 34%)
+- Stone 900: hsl(24, 5%, 18%)
+
+- Brown 800: hsl(14, 45%, 36%)
+
+- Rose 800: hsl(332, 51%, 32%)
+- Rose 50: hsl(330, 100%, 98%) */
+
+.text-white{
+    color : hsl(0, 0%, 100%);
 }
 
-li::marker{
-    color : hsl(332, 51%, 32%);
-    font-size : .8rem;
+.text-stone-100{
+    color : hsl(30, 54%, 90%);
 }
 
-body {
-    background-color: hsl(30, 54%, 90%);
-}
-main {
-    font-family: 'Arial', sans-serif;
-    color: #333;
-    width: 50%;
-    margin: 200px auto;
-    background-color: white;
-    border-radius: 20px;
-    padding : 50px;  
+.text-stone-150{
+    color : hsl(30, 18%, 87%);
 }
 
-.omelette{
-    border-radius: 10px;
-    width: 100%;
-    height: auto;
-}
-
-h1{
-    font-size : 2.5rem;
-    margin : 20px 0;
-    font-weight: normal;
-    font-family: 'Young Serif', serif;
-}
-
-.text-content {
-    line-height: 1.5;
-    font-size: 1.1rem;
+.text-stone-600{
     color : hsl(30, 10%, 34%);
 }
 
-.preparation {
-    background-color: hsl(330, 100%, 98%);
-    border-radius: 20px;
-    padding : 20px;
-    font-size: large;
-    margin : 20px 0px;
+.text-stone-900{
+    color : hsl(24, 5%, 18%);
 }
 
-.preparation h3{
+.text-brown-800{
+    color : hsl(14, 45%, 36%);
+}
+
+.text-rose-800{
     color : hsl(332, 51%, 32%);
-    margin: 15px;
+}
+
+.bg-rose-50{
+    background-color : hsl(330, 100%, 98%);
+}
+
+
+/* 
+H1 ---> already having 700
+ */
+
+h1, h2 {
+    font-family: "Young Serif", serif;
+    font-weight: 400;
+}
+
+h3, p {
+    font-family: "Outfit", sans-serif;
+}
+
+h1 {
+    font-size : 4rem;
+}
+
+h2 {
+    font-size : 2.8rem;
+}
+
+h3 {
+    font-size : 2rem;
     font-weight: 600;
 }
 
-.instruction, .ingredient, .nutrition {
-    padding : 20px 0px;
-    margin : 20px 0px;
+p, li {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
 }
 
-.ingredient h2, .instruction h2, .nutrition h2{
+li {
+    margin: 1rem 2.4rem;
+    padding-left: 1.2rem;
+    /* border: 2px solid black; */
+}
+
+li::marker {
+    font-size: 1.4rem;
     color : hsl(14, 45%, 36%);
-    margin: 20px 0px;
-    font-size: 2rem;
-    font-weight: normal;
-    font-family: 'Young Serif', serif;
-    
+    font-weight: 700;
+}
+
+body {
+    /* nothing on left right, but top bottom pedding is required */
+    background-color: hsl(30, 54%, 90%);
+    padding: 20rem 50rem;
+}
+
+main {
+    background-color: hsl(0, 0%, 100%);
+    padding: 4.8rem;
+    border-radius: 2.8rem;
+}
+
+/* header now has width without any paddding, as it's taken by main so image can take 100% */
+
+header .omelette {
+    width: 100%;
+    border-radius: 1.6rem;
+}
+
+.header-content {
+    margin-top : 3.2rem;
+}
+
+.header-content h1 {
+    padding: 1.6rem 0;
+}
+
+.preparation {
+    border-radius: 1.6rem;
+    padding: 2.8rem;
+}
+
+.preparation, .ingredient, .instruction ,.nutrition {
+    margin-top: 3.2rem;
+    /* border: 2px solid black; */
 }
 
 .ingredient, .instruction {
+    padding-bottom: 2rem;
     border-bottom: 2px solid hsl(30, 18%, 87%);
 }
 
-.nutrition ul {
-    list-style-type: none;
-    margin-top: 10px;
-    display: block;
-    border: 2px solid red;
+.table {
+    /* border: 2px solid red; */
+    font-size: 1.6rem;
+    padding-top : 2rem;
 }
 
-.nutrition li {
-    display: inline-block;
-    width : 50%;
-    border: 2px solid blue;
-    margin: 0px;
+.table .row {
+    padding: 1.6rem 3.2rem;
+    border-bottom : 2px solid hsl(30, 18%, 87%)
+}
+
+.table .cell-left {
+    /* border: 2px solid violet; */
+    float: left;
+    width: 50%;
+}
+
+.table .cell-right {
+    /* border: 2px solid pink; */
+    float: right;
+    width: 50%;
+    font-weight: 600;
+}
+
+.table .row::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.table .row:last-of-type {
+    border-bottom: none;
 }
