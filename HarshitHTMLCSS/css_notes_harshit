@@ -214,3 +214,85 @@ sticky : with top/bottom it moves x pixels from viewport when we scroll past it.
 until that point it behaves like relative, after that point it behaves like fixed.
 so used in sticky navbars etc.
 if disappears when it's container is out of view.
+
+
+FLEX BOX: 
+
+container has to have a display property 
+
+display : flex or inline-flex 
+
+
+Then we need to decide flex direction, in which direction will it's immmediate childrens flow
+
+flex-direction 
+        : row,column, row-reverse, column-reverse
+
+
+then we need to see if we have many itself for single row/col then in which direction they'll flow
+
+flex-wrap 
+        : nowrap (normal) ---- all flex item will be in one line might overflow 
+        : wrap ---- splits into multiple lines from top to bottom 
+        : wrap-reverse --- splits from bottom to top.
+
+flex-flow : row/col/col-reverse/row-reverse nowrap/wrap/wrap-reverse 
+
+
+
+now it's time for spacing between immediate childrens
+
+justify-content 
+        : flex-start ----- stick to flex start of flex direction 
+        : flex-end ----- end of flex direction 
+        : center ---- centered along main axis
+        : space-between ---- first/end item stick to ends, and other's distribute space in between
+        : space-around ----- each element takes equal space on each of it's side. 
+                ---- note they won't seem equal, because each have 1 unit on left right
+                ---- so middle space = 2 units as one of left and one of right element.
+        : space-evenly
+                ---- this will have equal space 1 unit in between element, visually equal.
+
+        
+now let's see alignment/justification along cross axis
+
+align-items 
+        : streach ( take whole row streach to max-width)
+        : flex-start ( sticks on start of cross axis)
+        : flex-end
+        : center ( items are centered in the cross-axis)
+        : baseline; ( aligns such that their baseline aligns, meaning their text bottom etc.)
+
+
+finally it's time to justify wrap 
+    ( so content works on rows/colms ( justify-content, align-content), alignment mean width direction)
+
+align-content 
+
+    : flex-start 
+    : flex-end
+    : center 
+    : space-between 
+    : space-around 
+    : space-evenly 
+
+
+
+finally we have children properties 
+
+default order is same a source order
+order = 1 for all 
+
+then we can give order =-1, for element to come first etc.. 
+
+
+flex-grow : defines how much space item going to take 
+
+flex-grow : 0 by default, and all takes their default sizes and stick according to justify-content 
+
+
+
+align-self : specifying alignment of specific element 
+            : alignment means movement in vertical/cross axis
+
+

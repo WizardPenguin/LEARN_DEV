@@ -86,8 +86,12 @@ h1{
     list-style-type: none;
     margin-top: 10px;
     display: block;
+    border: 2px solid red;
 }
 
 .nutrition li {
     display: inline-block;
+    width : 50%;
+    border: 2px solid blue;
+    margin: 0px;
 }
