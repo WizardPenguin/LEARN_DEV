@@ -74,7 +74,7 @@ h3, p {
 }
 
 h1 {
-    font-size : 4rem;
+    font-size : 3.8rem;
 }
 
 h2 {
@@ -106,7 +106,7 @@ li::marker {
 body {
     /* nothing on left right, but top bottom pedding is required */
     background-color: hsl(30, 54%, 90%);
-    padding: 20rem 50rem;
+    padding: 15% 25%;
 }
 
 main {
@@ -117,7 +117,7 @@ main {
 
 /* header now has width without any paddding, as it's taken by main so image can take 100% */
 
-header .omelette {
+.omelette {
     width: 100%;
     border-radius: 1.6rem;
 }
@@ -166,7 +166,7 @@ header .omelette {
     /* border: 2px solid pink; */
     float: right;
     width: 50%;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .table .row::after{
@@ -177,4 +177,29 @@ header .omelette {
 
 .table .row:last-of-type {
     border-bottom: none;
+}
+
+@media(max-width:700px){
+    body {
+        /* nothing on left right, but top bottom pedding is required */
+        padding: 0;
+        margin: 0;
+    }
+    main {
+        padding: 0;
+        margin: 0;
+        border-radius: 0px;
+    }
+    .box {
+        padding: 0 2rem;
+    }
+    .omelette{
+        border-radius: 0;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+    .header-content{
+        margin: 0px;
+    }
 }
