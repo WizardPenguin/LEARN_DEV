@@ -266,3 +266,16 @@ p, li, a {
     display: block;
     clear: both;
 }
+
+
+/* #################### footer ############################ */
+
+.footer {
+    background-color: #263238;
+    color: white;
+    text-align: center;
+}
+
+.social-media-links i{
+    margin: 2rem;
+}
