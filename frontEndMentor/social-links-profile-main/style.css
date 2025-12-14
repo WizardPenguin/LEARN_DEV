@@ -100,7 +100,7 @@ main {
     color: hsl(0, 0%, 12%);
 }
 
-@media(max-width:800px){
+@media(max-width:600px){
     .container {
         width: 90%;
         padding: 1rem;
