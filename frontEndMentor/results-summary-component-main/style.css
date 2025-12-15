@@ -24,7 +24,7 @@ main {
     display: flex;
     border-radius: 2rem;
     height: 35rem;
-    width: 55rem;
+    width: 50rem;
 }
 
 .container {
@@ -50,7 +50,7 @@ main {
 
 .result-score {
     margin: 1.2em auto;
-    width: 50%;
+    width: 70%;
     aspect-ratio: 1;
     border-radius: 40rem;
     background-color: black;
@@ -62,7 +62,7 @@ main {
 }
 
 .result-marks {
-    font-size: 3.5rem;
+    font-size: 5rem;
     font-weight: 700;
     padding : .6em .6em 0em .6em;
 }
@@ -81,6 +81,7 @@ main {
 .result-description {
     font-size: 1.2rem;
     font-weight: 600;
+    padding: 1em;
     color: hsl(241, 100%, 89%);
 }
 
@@ -168,4 +169,37 @@ main {
     border-radius: 20rem;
     width: 100%;
     margin-top: 1em;
+}
+
+
+/* ################################## adding media queries ########################### */
+
+@media(max-width:50rem){
+    main {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding-top: 5rem;
+        height: auto;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .result-header {
+        margin-top: 2rem;
+        font-size: 1.3rem;
+    }
+
+    .result-score {
+        margin: 1.2em auto;
+        width: 50%;
+    }
+
+    .result-marks {
+        font-size: 3.5rem;
+        font-weight: 700;
+        padding : .6em .6em 0em .6em;
+    }
 }
