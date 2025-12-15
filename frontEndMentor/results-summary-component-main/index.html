@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="./style.css">
   
   <title>Frontend Mentor | Results summary component</title>
 
@@ -15,29 +16,53 @@
   </style>
 </head>
 <body>
-
-  Your Result
-  76
-  of 100
-
-  Great
-  You scored higher than 65% of the people who have taken these tests.
-  
-  Summary
-
-  Reaction
-  80 / 100
-
-  Memory
-  92 / 100
-
-  Verbal
-  61 / 100
-
-  Visual
-  72 / 100
-
-  Continue
+  <main>
+    <section class="container result">
+      <h1 class="result-header">Your Result</h1>
+      <div class="result-score">
+          <p class="result-marks">76</p>
+          <p class="result-out-of">of 100</p>
+      </div>
+      <p class="result-outcome">Great</p>
+      <p class="result-description">
+        You scored higher than 65% of the people who have taken these tests.
+      </p>
+    </section>
+    <section class="container summary">
+      <h1>Summary</h1>
+      <div class="summary-container">
+        <div class="summary-section reaction">
+          <p><img src="./assets/images/icon-reaction.svg" alt="Icon"></p>
+          <h2>Reaction</h2>
+          <div class="marks">
+            <span class="got">80</span> <span class="out-of">/100</span>
+          </div>
+        </div>
+        <div class="summary-section memory">
+          <p><img src="./assets/images/icon-memory.svg" alt="Icon"></p>
+          <h2>Memory</h2>
+          <div class="marks">
+            <span class="got">92</span> <span class="out-of">/100</span>
+          </div>
+        </div>
+        <div class="summary-section verbal">
+          <p><img src="./assets/images/icon-verbal.svg" alt="Icon"></p>
+          <h2>Verbal</h2>
+          <div class="marks">
+            <span class="got">61</span> <span class="out-of">/100</span>
+          </div>
+        </div>
+        <div class="summary-section visuals">
+          <p><img src="./assets/images/icon-visual.svg" alt="Icon"></p>
+          <h2>Visual</h2>
+          <div class="marks">
+            <span class="got">72</span> <span class="out-of">/100</span>
+          </div>
+        </div>
+      </div>
+            <a href="#">Continue</a>
+    </section>
+  </main>
   
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 

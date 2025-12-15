@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Outfit:wght@100..900&family=Young+Serif&display=swap');
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: "Hanken Grotesk", sans-serif;
+}
+
+body {
+    background-color: hsl(221, 100%, 96%);
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+main {
+    background-color: hsl(0, 0%, 100%);
+    margin: auto;
+    position: absolute;
+    top : 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    border-radius: 2rem;
+    height: 35rem;
+    width: 55rem;
+}
+
+.container {
+    width: 50%;
+}
+
+.result {
+    background: linear-gradient(
+        to bottom,
+        hsl(252, 100%, 67%),
+        hsl(241, 81%, 54%)
+        );
+    border-radius: 2rem;
+    padding: 2.5rem;
+    text-align: center;
+    color: white;
+}
+
+.result-header {
+    color: hsl(241, 100%, 89%);
+    font-weight: 600;
+}
+
+.result-score {
+    margin: 1.2em auto;
+    width: 50%;
+    aspect-ratio: 1;
+    border-radius: 40rem;
+    background-color: black;
+    background: linear-gradient(
+        to bottom,
+        hsla(256, 72%, 46%, 1),
+        hsla(241, 72%, 46%, 0)
+    );
+}
+
+.result-marks {
+    font-size: 3.5rem;
+    font-weight: 700;
+    padding : .6em .6em 0em .6em;
+}
+
+.result-out-of {
+    color: hsl(241, 100%, 89%);
+    font-weight: 600;
+}
+
+.result-outcome {
+    font-size: 2rem;
+    font-weight: 600;
+    padding-bottom: .5em;
+}
+
+.result-description {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: hsl(241, 100%, 89%);
+}
+
+.summary {
+    border-radius: 2rem;
+    padding: 2.5rem;
+    color: black;
+}
+
+.summary h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: hsl(224, 30%, 27%);
+}
+
+.summary-container {
+    /* border: 2px solid red; */
+    margin : 1.5rem 0;
+}
+
+.summary-section {
+    margin: 1rem 0;
+    /* border: 2px solid blue; */
+    border-radius: 1rem;
+    padding: 1em;
+}
+
+.summary-section p, .summary-section h2, .summary-section div{
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: 600;
+    /* border: 2px solid violet; */
+}
+
+
+.summary-section p {
+    margin-right: .3em;
+}
+
+
+.summary-section div {
+    float: right;
+}
+
+.marks .got {
+    color: rgba(0, 0, 0, 0.705);
+    font-weight: 700;
+}
+
+.marks .out-of {
+    color: rgba(0, 0, 0, 0.205);
+    font-weight: 700;
+}
+
+.reaction {
+    color: hsl(0, 100%, 67%);
+    background-color: hsla(0, 100%, 67%, 0.05);
+}
+
+.memory {
+    color: hsl(39, 100%, 56%);
+    background-color: hsla(39, 100%, 56%, 0.05);
+}
+
+.verbal {
+    color: hsl(166, 100%, 37%);
+    background-color: hsla(166, 100%, 37%, 0.05);
+}
+
+.visuals {
+    color: hsl(234, 85%, 45%);
+    background-color: hsla(234, 85%, 45%, 0.05);
+}
+
+
+
+.summary a {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    background-color: hsl(224, 30%, 27%);
+    padding: 1rem .8rem;
+    border-radius: 20rem;
+    width: 100%;
+    margin-top: 1em;
+}
