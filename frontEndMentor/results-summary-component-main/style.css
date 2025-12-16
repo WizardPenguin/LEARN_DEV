@@ -11,16 +11,14 @@ body {
     background-color: hsl(221, 100%, 96%);
     width: 100vw;
     height: 100vh;
-    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 main {
     background-color: hsl(0, 0%, 100%);
     margin: auto;
-    position: absolute;
-    top : 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
     display: flex;
     border-radius: 2rem;
     height: 35rem;
@@ -174,13 +172,61 @@ main {
 
 /* ################################## adding media queries ########################### */
 
-@media(max-width:50rem){
+@media(max-width:800px){
+    body {
+        position: static;
+    }
+    main {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        position: static;
+        height: auto;
+        border-top-left-radius: 0rem;
+        border-top-right-radius: 0rem;
+    }
+
+    .result {
+        border-top-left-radius: 0rem;
+        border-top-right-radius: 0rem;
+        padding-top: 1rem;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .result-header {
+        margin-top: 2rem;
+        font-size: 1.3rem;
+    }
+
+    .result-score {
+        margin: 1.2em auto;
+        width: 40%;
+    }
+
+    .result-marks {
+        font-size: 3.5rem;
+        font-weight: 700;
+        padding : .6em .6em 0em .6em;
+    }
+}
+
+@media(max-width:550px){
     main {
         display: flex;
         flex-direction: column;
         width: 100%;
-        padding-top: 5rem;
         height: auto;
+        border-top-left-radius: 0rem;
+        border-top-right-radius: 0rem;
+    }
+
+    .result {
+        border-top-left-radius: 0rem;
+        border-top-right-radius: 0rem;
+        padding-top: 1rem;
     }
 
     .container {
