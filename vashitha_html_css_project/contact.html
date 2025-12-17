@@ -3,9 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Contact Us</title>
 </head>
 <body>
-    
+    <div class="about-nav">
+        <nav class="nav container bg-dark">
+            <h1 class="logo lg-heading text-light">WT</h1>
+            <ul class="nav-items">
+                <li class="nav-item"><a href="./index.html">Home</a></li>
+                <li class="nav-item"><a href="./about.html">About</a></li>
+                <li class="nav-item"><a href="./contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+    <section class="contact">
+        <div class="container">
+            <div class="about_us">
+                <div class="location">
+                    <i class="fa-solid fa-location-crosshairs fa-2x text-red"></i>
+                    <h1>location</h1>
+                    <p>#253 x colony, city name, town name</p>
+                </div>
+                <div class="email">
+                    <i class="fa-solid fa-message fa-2x text-red" ></i>
+                    <h1>e-mail</h1>
+                    <p>raman952002@gmail.com</p>
+                </div>
+                <div class="call">
+                    <i class="fa-solid fa-phone fa-2x"></i>
+                    <h1>call</h1>
+                    <p>+910101010101</p>
+                </div>
+                <div class="image text-red">
+                    <img src="./img/company-img.jpg" alt="company image">
+                </div>
+            </div>
+            <div class="contact_us">
+                <h1 class="lg-heading text-black">Contact Us</h1>
+                <p class="text-gray">Let us know your question, suggestions and concerns by filling out the cnotact form below</p>
+                <form action="">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="usr" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="mail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="number" id="phone" class="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea name="Message" id="message"></textarea>
+                    </div>
+                    <button type="submit"> submit</button>
+                </form>
+            </div>
+        </div>
+
+    </section>
 </body>
 </html>

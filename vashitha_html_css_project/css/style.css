@@ -399,11 +399,9 @@ footer a {
     float: right;
     width: 30%;
     text-align: center;
-    display: inline-block;
     font-weight: 700;
     font-size: 2.5rem;
     text-transform: uppercase;
-    border: 4px solid white;
     letter-spacing: .25rem;
     color: #f4f4f4;
 }
@@ -412,4 +410,104 @@ footer::after{
     content: "";
     display: block;
     clear: both;
+}
+
+/* ################################### contact page ############################ */
+
+section.contact {
+    border: 2px solid black;
+    padding: 8rem;
+    background: #f7f7f7;
+}
+
+.about_us {
+    float: left;
+    width: 49%;
+    height: 660px;
+    background: #fff;
+}
+
+.contact_us {
+    float: right;
+    width: 49%;
+    height: 660px;
+    background: #fff
+}
+
+.contact_us, .about_us {
+    padding: 1rem;
+}
+
+section.contact::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* ####################################### about_us section ################################ */
+
+.about_us h1 {
+    display: inline-block;
+    font-size: 2rem;
+    text-transform: uppercase;
+    padding: 0 .3em;
+    color: #444;
+}
+
+.about_us p {
+    color: #555;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.about_us .image img {
+    max-width: 90%;
+    min-height: 40rem;
+    object-fit: cover;
+    object-position: right;
+}
+
+/* ################################################# form styling #################################### */
+
+.contact_us h1::after {
+    content: '';
+    width: 100%;
+    display: block;
+    border: 2px solid red;
+}
+
+
+.form-group {
+    font-size: 2rem;
+}
+
+.form-group label {
+    display: block;
+}
+
+.form-group input {
+    padding : .5rem;
+    width: 100%;
+}
+
+.form-group label::after{
+    content: '*';
+    color: #e63946;
+}
+
+.form-group textarea{
+    width: 100%;
+    height: 200px;
+    padding: 1rem;
+}
+form button {
+    display: block;
+    margin: 0 auto;
+    padding: .5em 3em;
+    text-transform: uppercase;
+    background-color: #e63946;
+    color: white;
+    outline: none;
+    border: none;
+    cursor: pointer;
 }
