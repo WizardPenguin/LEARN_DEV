@@ -296,3 +296,222 @@ align-self : specifying alignment of specific element
             : alignment means movement in vertical/cross axis
 
 
+
+
+            ############################ flexbox via harshit ################################
+
+flexbox is more powerful than floats , floats needs clearing and stuff like that..
+tables were used before this...
+
+when container takes flex :  childrens behaves like inline elements, takes only width that it's items needs
+
+display : flex ; ####### container get's this property 
+
+flex items goes in direction of main axis, other axis is cross axis....
+    main-start, main-end, cross-start, cross-end.
+
+flex-direction : row ; main axis goes from left to right.... 
+
+flex-wrap : used when we have element overflowing, by default flex adjusts them in single row,
+    but using wrap we can make that content to flow in cross axis direction 
+    : wrap=reverse -----> changes the direction of cross axis
+
+by default each flex item takes complete width ------ meaning streach on corss axis, if there's single row ( no wrap)
+
+
+justify-content : moves items in main axis direction
+
+justify  from  flex-start or flex-end..... space betwerre etc... 
+
+
+justifying in cross axis when no wrap......... then it's different so 
+
+align-item ----this streaches in direction of cross axis so flex start/end means w.r.t cross here.
+
+align-item ----- works for single row ( item ), 
+
+
+
+
+containers property ;;;;;
+
+align-self ---- overrrides align-item and help giving corss axis movement to single element.
+
+order =0 for all by default, 
+smaller order comes closer to flex-start, and other's goes far
+
+
+flex-basic ------ starting width of item in direction of main axis, so different from width
+            ------ basic length given in that direction is ovverriten by it.
+
+flex-grow --- defines how remaining empty space going to be distributef
+    ---- it provides ratio by which this distribution is to be done, default = 1
+    ---- that space is divided int hat ration and using that space elements increases their sizes
+    ---- in responsiveness when that space starts decreasing element also changes accordingly in corresponding ration
+
+
+somewhat similar is flex-shrink, defines when spaces starts loosing, who's going to loose it's width at what rate.
+
+
+flex : flex-grow flex-shrink flex-basic
+
+
+
+
+CSSSS animation : 
+
+
+changing from one style to another..... 
+
+animation-name : change-bg-color;
+amimation-duration : 5s; ### important otherwie there won't be any transiton
+animation-delay : 3s; ----- starts after 3 seconds of loading
+animation-iteration-count : 3 -------- number of time animation repeats, but here going back to original happen quickly without transition.
+amimation-fill-mode : forwards -------- it remains in state animation too it to, no comming back.
+amimation-direction : reverse ----- animation goes in reverse if fill mode forward, then it ends at (from) properties.
+
+defining keyframe : defines at some interval what is state of element 
+
+@keyframes change-bg-color {
+    from {
+        background : red;
+    }
+    to{
+        background : yellow;
+    }
+}
+
+we can also make animation for width change etc....
+
+@key-frames grow-width {
+    from {
+        width: 0;
+    }
+    to {
+        width:150px
+    }
+}
+
+
+let's say we want thing to move in square , we can set style for percentage of time. ( remember animation time.)
+animation-iteration-count : infinite; also works.....
+
+element need to have position relative ----- so we can move it w.r.t it's original position..
+@keyframes move-around{
+    0% {
+        top: 0;
+        left: 0;
+    }
+    25% {
+        top: 0;
+        left: 300;
+    }
+    50% {
+        top: 300;
+        left: 300;
+    }
+    75% {
+        top: 300;
+        left: 0;
+    }
+    100% {
+        top: 0;
+        left: 0;
+    }
+}
+
+animation-timing-function : ease-in   -> animation starts slowly
+    ease-out ------> animation ends slowly
+    ease-in-out ------> animation start and ends slowly
+
+animation-fill-mode : forward; ( end state is retained...)
+
+
+
+
+animation : name duration fill-mode delay iteration-count timing-function ;
+
+
+
+
+
+
+
+
+
+##################################### css trasitions ###########################
+changing of state on some event : hover/focus etc....
+
+.box : hover {
+    background: red;
+}
+
+now when we hover color directly changes to red, but we want it to animatte
+it works both ways, when property changes back, it still transits...
+
+
+.box {
+    transition-property : background;
+    transition-duration : 1s;
+    transition-timing-function: ease-in-out;
+}
+
+short ===== transition : background 500ms ease-in-out;
+
+
+transition : background 1s ease-in-out, width 1s ease-in-out;......
+transition : all 1s ease-in;
+
+
+
+######################### tranformation ##########################################
+rotate,skew,scale,transate..
+usually used with transition, when some property changes then transition triggered...
+
+transition: tranform 1s ease-in-out;
+
+:hover {
+    tranform : rotate(20deg);  ( for reverse use -20deg)
+}
+
+
+:scaleX(time)
+
+:scaleX(2)
+:scaleY(2)
+:scale(2) ---- both direction double...
+:scale(1.5,2); --- both direction but different values..
+
+
+
+:translate(); ======= changing position left,right,top,bottom....
+
+:translateX(50px);
+we can also use percentages with it....
+:translateX(-50%); --> move left 50% width of element on which property being applied.
+:translate(20px,-20px);
+
+
+
+:skew() ====== along x axis or along y axis 
+
+:skewX(20deg) ----- keep x axis stable move y 20deg anti-clockwise. 
+
+
+
+on what point does these tranforms happens 
+
+origin --- center of object based on height width .... 
+
+we can change this origin 
+
+tranform-origin : top left; ( then rotate it'll rotate from top right)
+                : 10px 10px ( 10px from left, 10px from top.)
+
+
+
+
+
+overlays : a extra screen that floats over some element 
+we'll use transition/animation/tranform for these. 
+

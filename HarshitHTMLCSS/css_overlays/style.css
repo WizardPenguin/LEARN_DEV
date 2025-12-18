@@ -1,0 +1,95 @@
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.title {
+    text-align: center;
+    margin: 1rem auto;
+}
+
+.box {
+    border: 4px solid red;
+    max-width: 500px;
+    margin: auto;
+    position: relative;
+}
+
+.box img{
+    display: block;
+    width: 100%;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #454545;
+    color: #fff;
+    padding: .5em 1.5em;
+    margin-top : .8em;
+    transition: all 0.4s ease-in;
+}
+
+.btn:hover {
+    background: #232323;
+    box-shadow: 5xp 5px 10px #00000069;
+}
+
+
+
+/* we also want something that will move inwards some background and then we'll bring text to light with it */
+
+.box::after{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: #00000091;
+    z-index: 1;
+    transition: opacity .2s ease-in-out;
+    opacity: 0;
+}
+
+
+/* we want to move box-content from top of box, so we have to make box relative, and box-content as relative so it move relative to parent */
+
+.box-content {
+    position: absolute;
+    top: 50%;
+    left : 20%; /* we want it too to move inwards*/
+    transform: translate(-50%,-50%);
+    color: #fff;
+    text-align: center;
+    opacity: 0;  
+    /* opacity used so we can use transition on it */
+
+    /* we want it over background */
+    z-index: 2;
+    transition: all .4s ease-in-out;
+}
+
+.box-content h3 {
+    font-size: 18px;
+}
+
+
+/* we only want box-content to be slown when we hover it. */
+
+.box:hover .box-content {
+    /* add transition to opacity element, and left */
+    opacity: 1;
+    left: 50%;
+}
+
+.box:hover::after {
+    opacity: 1;
+}
