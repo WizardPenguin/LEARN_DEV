@@ -1,0 +1,150 @@
+starting with grid 
+
+{
+    display : grid;
+}
+
+.container>.item.item${Item $} { creates with class item itemi , with content item i}
+
+by default they stack in column direction...... 
+or it remains as it iss....
+
+
+How to create columns as default is single column ::: 
+
+gtc 
+
+grid-template-column : 100px 200px 100px; 
+
+{ browser auto adjusts number of rows (implicitly)}
+
+we can also give percentage .... 
+
+{gap : row_gap column_gap}
+column-gap = 50px , and we set column size 50%, 50% ---- then it'll go out and we have extra gap... 
+row-gap
+
+so we uses flexible units ..... 
+grid-template-column : 100px 1fr 1fr; 
+        or 100 repeat(2,1fr) 
+
+if some row/column created implicitly then they takes their default width to change it 
+
+grid-auto-rows : 300px ; ..... so if rows not in template, then they auto gets 300px... 
+
+grid-auto-flow : row ; // default value, so each element added as rows... meaning 
+                    when things starts going out of width, then it auto goes to next row... and values are putted row wise.....
+
+
+let's just say row-size if fixed using grid-auto-row : 100px 
+
+then we can create column like 
+
+grid-template-columns : repeat(auto-fill,200px) ----- as much as they can adjust but atlest 200px....
+
+auto-fill ----- it auto creates extra columns, meaning if we give property to work with space, it won't help, as it has created element..
+auto-fit ------ grid doesn't go to extra space, extra space not divided via grid, doesn't create extra columns
+
+
+sometime when element can't fit in extra space it goes to next row, and space is :empty
+to occupy that space we can changed widht of element meaning
+repeat(auto-fit, minmax(150px, 1fr))   here we can analyse auto-fill, if we have less elements compared to whole width can occupy..
+
+
+
+increasing span of our item ::::: 
+
+layout--- show line numbers.... 
+
+.item1 {
+    grid-column-start : 1;
+    grid-column-end : 3;
+}
+
+or 
+
+grid-column : 1/3; ( here we give line number)
+    : 1 span 2 ( this takes 2 items size, it doesn't matter going to which line)
+    : span 2 ( does't matter from where it's starting, we have to give it span of 2)
+
+taking whole span 
+
+grid-column : 1 / -1 ( occupies whole columns doesn't matter of numbers ininreases or decreases)
+
+but if someone in middle is increase like this, then it might cause empty spaces in upper ones to deal with it 
+
+grid-auto-flow : dense ( this algrithm moves items our of order is there is empty space and more elements to put there)
+
+
+
+1st we need to move element inside a grid ( items)
+
+justify-items :  / default it's streach (start,end, space-between, center)  work is done alnog x axis, meaning horizontal
+align-items ;    / working on horizontal direction up/down y axis
+
+place-items : align-items justify-items ; 
+
+
+
+justify-content, align-content..... in case we have extra space outside grid lines, inside grid container
+
+place-content : align-content justify-content;
+
+ 
+
+align-self, justify-self ------> can be applied to indivisuals....
+shorthand place-self. 
+
+
+Grid template areas ::: 
+
+in container : 
+
+grid-template-areas : "header header"
+    "content sidebar"
+    "footer footer"
+
+tell everyone which area they belongs to.. 
+
+header {
+    grid-area : header
+}
+
+footer {
+    grid-area : footer;
+}
+
+aside {
+    grid-area : sidebar;
+}
+    
+
+
+now for reponsiveness... 
+
+grid-template-areas : 
+    "header"
+    "content"
+    "sidebar"
+    "footer"
+
+
+
+
+
+
+
+
+
+grid-auto-flow : change direction of content movement
+grid-template-columns : percentage or fr or pixels or auto( size of container or size of content in column)
+grid-template-rows : 
+
+
+row-gap and column-gap
+
+
+{ grid-column-start grid-column-end} ------ we can event move elements in middle by starting them from some col and ending other.. 
+
+grid-column-start : span <number>
+
