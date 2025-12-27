@@ -130,9 +130,25 @@ grid-template-areas :
 
 
 
+Image properties :
+
+object-fit : cover
+object-position : center/ top left /...
+
+overflow : hidden;
 
 
+debugging ::::: 
+removing everything inside a box, so ew  can foxus on outside. 
 
+.box > * {
+  display: none;
+}
+
+remember : 
+overflow : hidden ----> clips doesn't removes 
+opacity = 0 -----> still cicable 
+hieght: 0 ===> collapses whole box
 
 
 
