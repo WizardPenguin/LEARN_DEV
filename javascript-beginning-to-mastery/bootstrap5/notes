@@ -1,0 +1,450 @@
+bootstrap - include it, it's a CSS enhancer
+extension : HTML CSS Support
+
+# container row column in grid system 
+
+.conatiner ---> adds padding on screen automatically for it's data
+
+it's made responsive for small,medium,small, extra larger, extra extra large.... etc screen sizes
+
+container-md ---- if we set class to breakpoint 
+others are container-fluid container-lg container-md container-sm container-xl container-xxl
+
+then every size larger than that is going to have breakpoint property 
+and every size below that is going to be fluid
+
+## rows 
+
+
+## sizing column
+default column takes 1fr ---- equaly divided size
+botstrap grid is based on 12 column spaces 
+
+col-x ------> take size of x columns 
+col-auto ----> make col just the size of content... 
+
+if we don't specify breakpoint ----- then every screen size if going to have that ratio throught.. 
+
+col-lg-4 --> on all screen sizes lg and above we want it to have 4 column space.
+** larger size breakpoints overrrides default properties 
+col-lg-4 col-8 ---> col 8 is now default but for lg above it's 4.
+### if we don't give default value then going below larger will give it 12 column..
+
+so we can add more breakpoint properties.. 
+
+
+### overflow of column
+things wraps around to next row... 
+
+### ofsetting column
+creating extra space of size of column before that particular column
+offset-3 --> creates 3 col space beofre this element in col. ( it always count space from base line of previous element... in that row)
+
+
+## row creation 
+
+row-cols-2 ( creates 2 col for each row)
+
+now elements inside them take their place in that grid.
+
+we can still mannually specify size by using col-x 
+
+row-cols-lg-4 ---- meaning after larger and above we need 4 cols each time.. 
+
+default break1 break2..... is way to write.
+
+## verticle gap.... 
+
+gy-0...5  or gx-0...5
+gap on y axis.... or x axis...
+
+we can have them on break points too
+
+gy-lg-2 .... etc
+
+
+## nesting 
+
+.container
+    .row 
+        .col
+            .row ..... this is pattern always followed... tp breal col again into some cols
+
+
+
+
+# formatting table using bootstrap... 
+
+on top we can have table-responsive 
+--- which automatically creates a scrool bar in case rows goes out of hand..
+--- we can obviously give responsiveness based on screen sizes 
+table-responsive-lg ---- breakpoint
+
+.table ---- default spans like a container and give each rows and column good spacing 
+        --- also creates a bottom border for each row 
+.table-striped
+.table-striped-column
+.table-hover ----- whenver we go over some element it changes it's apperiance 
+    .table-active --- will make default hover on on some element which i'ts iven
+
+table-boardered
+table-borderless
+
+table-primary  ------ main blue color
+table-secondary ----- gray color 
+    -success -------- green
+    -danger --------- red
+    -warning -------- yellow   
+    -info ----------- bluish green 
+    -light 
+    -dark 
+
+these are coloring scemes we can give them to table row/col (tr/td)...
+
+## table divider 
+table-group-divider
+
+finally we have a divider class that can only be give to thead or tbody
+this helps create a dark line on top of that thing....
+
+
+# forms 
+
+<form>
+    <label for='email'> Email </label>
+    <input type="emai" id="email">
+    <button> Submit </button>
+<form>
+
+we have input, lable which need to be given some properties... 
+
+label.form-lable --- nice padded and on top of input
+input.form-control ---- spans full size as that of container, to control we need grid, has focus effect etc.. 
+    .form-control-sm ---- shrinks down size of input 
+    .form-control-lg 
+disabled --- property taken into account and it stops taking input due to bootstrap
+value = 'something' readonly ------ makes it read only looks like form and doesn't allow input
+
+readonly .form-control-plantext ---- if we want eact width hieght that of input, but a plain text
+
+
+### color picker 
+.form-control-color ---- will make valid input type = 'color'
+
+### range 
+.form-range ---- will take type = 'range' and doesn't combile with form-control
+
+
+### select input 
+<select> 
+    <option> one <option>
+    <option> tow </option>
+</select>
+
+select.form-select or form-select-sm .... 
+works fine with disabled etc too... 
+
+### checkboxes 
+generally lable comes after in checkboxes
+
+<div class = 'form-check'>
+    <input type = 'checkbox' class = 'form-check-input' id = 'x'/>
+    <lable for = 'x' class = 'form-check-lable'>
+</div>
+
+if we add div.form-switch  ---> converts checkbox to a switch 
+
+if we have many div.form-check and want inline , add form-check-inline to all. 
+
+## input group 
+divides input into some parts with some values or other input or plane text ... disabled input etc in single row.. 
+
+<lable for='text' class='form-label'> text </lable>
+<div class = "input-group">
+    <input type = 'text' id = 'text' class = 'form-control'>
+    <!-- <input type = 'text' id = 'text2' class = 'fomr-control'>.....  -->
+    <div class = 'input-group-text'> $ </div> --- takes just the size of text and pushed to right 
+    // we have input-group-lg ... etc
+
+    <input type = 'text' id = 'text' class = 'form-control'> --- inputs try to take equal space, and div's are given space they needed..
+    <div class = 'input-group-text'> $ </div> --- takes just the size of text and pushed to right 
+
+    can also add buttom 
+    <buttom class = 'btn btn-primary> + </buttom> 
+</div>
+
+
+### floating lable 
+lable must come after input 
+input must have a placeholder value... 
+when we start typing then lable goes smaller on top, and we start typing.. 
+
+<div class = 'form-floating'>
+    <input type = 'email' id = 'email' class = 'form-control' placeholder = 'place email here'> 
+    <label for='email' class = 'form-label'> Email </label> // don't really need form-lable class here
+</div> 
+
+
+### form validation 
+
+is-invalid 
+is-valid 
+..
+
+default 
+<form novalidate> ---- this is default behaviour 
+when we click submit, it just says fill something in required nothing else.. 
+
+we can override that default behaviour
+
+<script> 
+    const form = documen.querySelector('form')
+
+    form.addEventListner('submit', e => {
+        e.preventDefault(); // prevent from submitting.
+    })
+
+    form.classList.add('was-validated'); // add this class to form... 
+</script>
+
+then once we click on submit, it starts showing is form-validations... 
+which automatically updates when we start writing input wrong/correct.... 
+
+this is done so we don't show these validation automatically when we load form... 
+
+### adding custom validation text , below label we can write div's for feedback 
+
+<div class = 'invalid-feedback'> Invalid email </div>
+
+
+# bootstrap components 
+
+## button component 
+
+button.btn.btn-primary/seconday....
+
+we can also use them on anchor tags. 
+
+a.btn.btn-primary... 
+
+*** just as note if button need to be shown as link button.btn.btn-link... 
+
+### sizes
+btn-lg 
+btn-small 
+
+### versions of button 
+btn-outline-secondary 
+
+disabled ----- fades out button either give as class or as parameter. 
+
+data-bs-toggle = 'button' ----- then it has button toggle feature, meaning property changes in toggle manner. 
+this is a custom data attribute that allow to hook some properties with JS.
+
+for screen reader we can give some properties like area... 
+
+area-pressed = true , if we button.active as initial value.. 
+
+### button group 
+div.btn-group ---> makes groups similar to that of input group. 
+
+or btn-group-vertical --> to stack them vertially.
+
+
+
+# alerts 
+
+<div class = 'alert alert-success' role = 'alert' > Alert </div>
+role --- given for screen reader. 
+
+## coloring alert 
+.alert-dark .. etc danger/success
+
+## dismissible alert 
+
+<div class = 'alert aler-success alert-dismissible' role = 'alert'>
+    Alert 
+    <button class = 'btn-close' area-label='close' data-bs-dismiss = 'alert'> </button>
+    // -dismiss so it knows we are closing a alert
+</div>
+
+## alert link 
+<a class = 'alert-link' href = '#'> know more </a>  --- data inside alert text. 
+
+## fade 
+div.fade.show ---> default showing.. 
+
+
+# card 
+
+<div class = 'card' style = 'width : 300px'>
+    <div class = 'card-header'> </div> // makes a section different from body ... etc...
+    <img class = 'card-img-top' src = 'xx.png'>  // card-img-bottom // card
+    <div class = 'card-body'> // it can be overlayed over image card-img-overlay and img with card-img only.
+        div.card-title
+        div.card-subtitle
+        div.card-text..... 
+            text.. 
+    </div> 
+    <div class = 'card-footer'> </div>
+</div>
+
+## card-group 
+div.card-group
+    div.card
+        div.card-header... 
+    div.card 
+        div.card-header... 
+
+
+
+# model 
+
+<button class = 'btn btn-primary' data-bs-toggle='modal' data-bs-target = '#modal'> open </button>
+// we have data-bs-toggle to chooose what to happen
+// data-bs-target = selector to chose on what we want effect on. this is needed to be more specific. 
+
+<div class = 'modal fade' class = 'modal'> // modal-xl 
+    <div class = 'modal-dialog'>  // modal-dialog-centered modal-diaglog-scrollable modal-fullscreen
+        <div class = 'modal-content'>
+            .modeal-header
+                <button class = 'btn-close' data-bs-dismiss = 'modal' data-bs-target = '#modal'>
+            .modal-body 
+            .modal-footer 
+                <button class = 'btn btn-primary' data-bs-dismiss = 'modal'> close </button>
+
+
+
+# collapse 
+
+allows us to show and hide some components 
+
+toggle type = collapse
+and target = selector of component to collapse
+
+<button class = 'btn btn-primary' data-bs-toggle = 'collapse' data-bs-target = '#row' aria-expanded = 'true' area-control='row'>
+
+<div class = 'row show'> // row should already know it's expanded or collapsed add collapse/show class 
+    <div class = 'col'>
+        <div class = 'box'> </div>
+    </div>
+</div>
+
+## if many elements shares same selector, we can collapse all them with single button
+
+
+# navbar 
+
+<nav class = 'navbar navbar-expand'> -- full screen navbar. 
+    <div class = "continaer">
+        <a href = "#" class = 'navbar-brand'> brand </a>
+        <ul class = 'navbar-nav'>
+            <li class = 'nav-item'>
+                <a href = '#' class = 'nav-link active' area-page='current'> </a>
+            </li>
+        </ul>
+        <div class = 'navbar-text'> random text </div> 
+    </div>
+</nav> 
+
+
+like this we can create navbar with ICON and ITEMS, which can have active class to show it differently. 
+        ** area page just set for active page. 
+    
+nav-link === active/disabled etc... 
+
+
+## coloring navbar
+    background = bg-dark 
+    then we can also set navbar coloring for dark using 
+    navbar-dark. 
+
+## collapsing navbar 
+if we remove navbar-expanded it's going to be shown in collapsed manner 
+let's say we only want it expanded on md and above 
+use  .navbar-expand-md
+
+whole navbar-nav needed to be under collapse 
+
+<button class = 'navbar-toggler' data-bs-toggle = 'collapse' data-bs-target = '#nav' area-controls = 'nav' area-label = 'expanded nav'>
+    <span class = 'navbar-toggler-icon'>   </span>
+<buttton>
+<div class = 'navbar-collapse collapse' id = 'nav'>
+    <ul class = 'navbar-nav'>
+        ...
+    </ul>
+</div>
+
+then going md and below auto hides navbar
+
+# utility classes 
+## color background/border/text
+
+bg-dark/...etc 
+text-white/light.... etc 
+
+### auto background and text 
+text-bg-dark ---- auto choose text works best for give background 
+
+### opacity 
+text-opacity-50
+bg-opacity-5
+opacity-40 === opacity of entire object 
+
+### coloring link 
+link-dark/danger .. etc
+
+
+## stacking objects together.. 
+
+.hstack 
+.vstack 
+
+avoids using flex explicitly, we can directly move object like this.. 
+
+
+## border utilities. 
+border ---- first add border then changes it's properties... / border-top / border-start
+border-primary 
+border-5 ---- border size... 
+rounded / rounded-3 / rounded-5 / rounded-pill / rounded-circle / rounded-top / rounded-bottom 
+border-opacity-40
+
+
+## changing display 
+d-block d-lg-none ## hiding on >= larger screen sizes. otherwise block.. 
+
+d-lg-flex .... etc.. 
+
+
+## padding 
+p-1 p-4 .... p-0
+
+pt-1 --- padding top /ps for start / pb / pe 
+
+## margin 
+similarly larging 
+
+mg-lg-5 ---- use 5 margin on screen lg or above... 
+m-auto ----- use auto margin on all side 
+me-auto ---- end margin is auto... 
+
+
+## flexbox 
+d-flex 
+justify-content-center / start / between / around 
+
+align-items-center / streach / 
+
+flex-no-wrap 
+flex-column 
+
+### box 
+align-self-center 
+flex-grow-1
+flex-shrink-1
+
+
+
+
+

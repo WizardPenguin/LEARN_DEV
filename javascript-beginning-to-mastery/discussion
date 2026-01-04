@@ -1,0 +1,157 @@
+# preincrement, post increment 
+# typeof object , .length 
+# string/array[0] 
+# string/array[string/array.length - 1]
+# string + number ===> string... 
+
+# string to number => Number(string) , parseInt(string) , parseFloat(string)
+# number to string => String(number) , number.toString()
+# boolean to number => Number(boolean)
+
+# alert, prompt, console.log, console.error, console.warn 
+
+# template literals => `${variable} text ${expression}`
+
+# methods on string 
+# .toUpperCase() , .toLowerCase() , .trim() , .includes(pattern) 
+# .startsWith() , .endsWith() , .slice() , .substring() , .replace(patter, new pattern) (single time replacement), .repeat()
+####### replace -- check it. 
+
+# methods chaining string_var.toUpperCase().trim().slice(0,5)
+# remember string is immutable, so methods return new string 
+
+
+# methods on array
+# .push(element) , .pop() , .shift() , .unshift(element) ------ add/remove from end/start
+# .includes(element) , .indexOf(element) , .lastIndexOf(element)
+# .slice(startIndex, endIndex) , .splice(startIndex, deleteCount, add_item1, add_item2, ...)
+# .join(separator) , .reverse() , .concat(array2)
+# .forEach( (element, index) => { ... } ) , .map( (element, index) => { ... return newElement } ) 
+# .filter( (element, index) => { ... return true/false } ) , .reduce( (accumulator, element) => { ... return newAccumulator } , initialValue )
+# remember array is mutable, so methods modify the original array (except slice, join, concat, map, filter, reduce)
+
+
+######### implicit type convertion ----- discuss 
+######### null , undefined --- discuss
+
+# some math methods
+# Math.round(number) , Math.floor(number) , Math.ceil(number) , Math.abs(number) , Math.pow(base, exponent) , Math.sqrt(number) 
+# Math.min(a, b, c, ...) , Math.max(a, b, c, ...) , Math.random()
+# Math.random() * (max - min) + min  => random number between min and max
+
+
+# object basics
+# object creation => let obj = { key1: value1, key2: value2, ... }
+# accessing properties => obj.key1 , obj['key2']
+# adding/updating properties => obj.key3 = value3 , obj['key4'] = value4
+# deleting properties => delete obj.key1 , delete obj['key2']
+# checking property existence => 'key1' in obj , obj.hasOwnProperty('key2')
+# iterating over properties => for (let key in obj) { ... } 
+
+
+# scope basics
+# global scope , function scope , block scope (let, const)
+# variable shadowing
+# happens when a variable declared within a certain scope (local scope) has the same name as a variable declared in an outer scope (global scope or parent function scope).
+# In such cases, the local variable "shadows" or overrides the outer variable within its own scope.
+# lexical scope
+# nested functions and access to outer function variables
+# hoisting (var vs let/const)
+# var declarations are hoisted to the top of their enclosing function or global scope. This means that you can use a var-declared variable before its actual declaration in the code.
+# let and const declarations are also hoisted, but they are not initialized until their actual declaration is evaluated. This means that if you try to access a let or const variable before its declaration, you will get a ReferenceError.
+##### if we declare variable using var inside a function, it's function scoped
+##### now if we call that function twice, then will it retain the value from previous call or it will be re-initialized
+##### answer is re-initialized. because each function call creates a new execution context with its own set of local variables.
+# closures (basic idea)
+# A closure is a function that "remembers" its outer variables and can access them.
+# This happens because when a function is defined, it captures the surrounding lexical scope, allowing it to access variables from that scope even when the function is executed outside of it.
+
+
+# function basics
+# function declaration => function funcName(params) { ... }
+# function expression => let funcName = function(params) { ... }
+# arrow function => let funcName = (params) => { ... }
+# parameters vs arguments
+# default parameters => function funcName(param1 = defaultValue1, param2 = defaultValue2) { ... }
+# return statement
+# early return vs late return --- discuss
+# happens when a function exits and returns a value to the caller.
+# # Early return refers to returning a value from a function before reaching the end of the function body, often based on a condition.
+# # Late return, on the other hand, refers to returning a value at the end of the function body after all the code has been executed.
+# function scope and variable shadowing
+# first-class functions (functions as arguments, return values)
+# IIFE (Immediately Invoked Function Expression) => (function() { ... })();
+
+
+# methods
+# functions as object properties
+# let obj = {
+#   methodName: function(params) { ... }
+# }
+# shorthand syntax
+# let obj = {
+#   methodName(params) { ... }
+# }
+# accessing object properties using 'this' keyword
+# let obj = {
+#   property: value,
+#   method() {
+#     console.log(this.property);
+#   }
+# }
+# 'this' refers to the object that the method is called on.
+# 'this' behavior in regular functions vs arrow functions
+# In regular functions, 'this' refers to the object that the function is called on.
+# In arrow functions, 'this' is lexically bound to the surrounding scope where the arrow function is defined.
+
+
+## can we write arrow function as method inside object ? what will be the 'this' behavior in that case ? discuss.
+# Yes, we can write an arrow function as a method inside an object. However, the 'this' behavior in that case will be different from regular functions.
+# In an arrow function, 'this' is lexically bound to the surrounding scope where the arrow function is defined, rather than the object itself.
+# This means that if you use an arrow function as a method inside an object, 'this' will not refer to the object, but rather to the outer scope where the arrow function was defined.
+
+
+# try catch block
+# try { ... } catch(error) { ... } finally { ... }
+# error object
+# properties: name, message, stack  
+
+
+# arrow function 
+# const mul = (a,b) => a*b;
+# implicit return
+# single parameter without parenthesis
+# const square = x => x * x;
+# multi-line arrow function with explicit return
+# const add = (a, b) => {
+#   const sum = a + b;
+#   return sum;
+# };
+
+# spread operator (...)
+# array expansion
+# const arr1 = [1, 2, 3];
+# const arr2 = [...arr1, 4, 5]; // [1, 2, 3, 4, 5]
+# object expansion
+# const obj1 = { a: 1, b: 2 };
+# const obj2 = { ...obj1, c: 3 }; // { a: 1, b: 2, c: 3 }
+# rest parameters
+# function sum(...numbers) {
+#   return numbers.reduce((acc, num) => acc + num, 0);
+# }
+# const total = sum(1, 2, 3, 4); // 10 
+# destructuring
+# array destructuring
+# const arr = [1, 2, 3];
+# const [a, b, c] = arr; // a=1, b=2, c=3
+# object destructuring
+# const obj = { x: 10, y: 20 };
+# const { x, y } = obj; // x=10, y=20 
+# default values in destructuring
+# const [p = 5, q = 10] = [1]; // p=1, q=10
+# const { m = 15, n = 25 } = { m: 30 }; // m=30, n=25
+# modules (import/export) -- discuss
+
+
+
+

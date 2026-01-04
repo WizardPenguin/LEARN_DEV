@@ -1,0 +1,733 @@
+import { useCallback } from "react"
+
+ JS : 
+
+ started with a front end development languages like JScript or java script 
+
+ then ECMA strandarized browers rendering languages as JS.
+ JS from 2015 onwards released new version each time... 
+
+
+JS different from java
+
+java is more wast can be used for web/android developments etc.. 
+it's used in high end development of backends etc... 
+
+
+but JS is also popular as it provides both web/android(react).. 
+
+
+
+CTRL shift + j is to open console. 
+
+JS should be added at end of body ?? why ?? 
+
+
+console.log(anything to print string,variable,etc);
+
+variables ::: 
+to store something.. 
+
+var firstname = "harshit" ---> string collection of characters inside quotoes,single quotes, backticks ( used in template strings)
+
+*** names of variables are case sensitives... 
+
+variables values can be changed
+
+
+**** variables neednot use var, we can directly use 
+firstname = "raman"
+
+....... this is problematic, as we can use some different names etc... 
+
+so we explicitly tell JS to use strict mode, to save from mistakes 
+
+"use strict"; 
+now directly writing 
+firstname = 'raman' ---- tells error firstname not defined.
+
+
+Rules for naming variables :: :: :: 
+
+can't start with number 
+but can use Dollar $ or underscore _ 
+anything can be used in middle.. or ending..... digits,characters,$,_
+
+** can't use space replacement is ,
+
+use camel case ---- firstName  [ convension is to start with small letter, then follow camel case], classes starts with Capital first...
+use snake case ---- first_name
+
+
+
+##### using let keyword 
+
+let firstname = 'x'
+
+---- let allows it to be in function scope, and var does it in global scope.
+---- let can't be used again for same variable.. but var can be...  : Identifier 'firstname' has already been declared.
+
+
+##### declaring constant 
+
+---- values which can't be changed 
+
+const pi = 3.14 .... 
+
+if we do 
+    pi = 4 ... uncaught typeError : Assignment to constant variable.
+
+
+##### strings 
+strings has characters indexed from 0. 
+my_string.length
+my_string[index] ---- to access a charater
+
+#### string manipulation 
+
+trim() 
+toUpperCase()
+toLowerCase()
+slice()
+
+
+###### string template 
+passing variables names inside string 
+
+`name is {name}`
+
+
+###### undefined 
+let firstname ---- it has been declared but not intialized, it's type is undefined
+var also goes undefined.. 
+
+##### null 
+typeof(null) ----> object it's a bug, as lots of code written considering this, so this is still a bug.
+but it's a datatype 
+but why used :::.. 
+
+
+##### BigInt() a new premitive datatype in JS
+myNumber = BigInt(12); or 12n.
+
+remember, mix bigInt and other datatype can't be added 
+error : mix bigint with other datatypes, use explicit conversion. 
+
+
+##### Boolean comparision :: 
+T/F operations... 
+
+let num1 = true; 
+let num1 = 5 > 7;
+
+equality num1 == num2... 
+
+num1 == num2 ======> it checks datatype and value, so it's more strict, as don't do implicit typecasting.. 
+
+!= , !== are also same.... firs they need same dtype only then operation performed.
+
+##### truthy and falsy values.. 
+
+falsy values ----> 
+false 
+""
+null
+undefined 
+0
+
+everything else is a truhy value..
+
+##### if/else conditions... 
+
+if () {
+
+} else {
+
+}
+
+##### ternary operator .
+
+let dring = (age > 5)?"coffee":"milk";
+
+#### and and or operatior 
+&&
+||
+if(firstName[0] === "H" && age > 18) {
+    console.log("someone greater than 18 with H");
+}
+
+#### prompt 
+let userFuess = prompt("Guess a number");
+---- type of value given by prompt is string **
+
+
+#### else if 
+
+if {}
+else if {}
+else {}
+
+#### switch case 
+
+switch(day) {
+    case 0:
+        .. 
+        break;
+    default : 
+        ..
+}
+
+
+#### while loop 
+let i = 0;
+while(i<-3){
+    console.log(i);
+    i++;
+}
+
+#### for loop 
+i is not defined outside scop of for, as we have used let.
+for(let i = 0; i < 3; i++) {
+    console.log(i);
+}
+if we had used var, then variable was allowed outside..
+
+
+#### continue and break; 
+
+break; ---> we come out of control statement, transfer control outside loop.. 
+continue; --> can only be used within loops not switch statement. ( skips remaining statements of that iteration)
+
+### do while loop.....
+
+do {
+    console.log(i);
+    i++;
+} while(i<9);
+
+###### arrays --- it's a referency type, they are also called object..
+ordered collection of items ( mix datatypes also allowed)
+
+let fruits = ["apple", "mango"];
+let number = [1,2,3,4, "five"]
+
+fruits[0] ---> apple
+fruits[1] ---> mango
+
+
+### relpacing element at some index ( arrays are mutable)
+fruits[1] = "banana"......
+
+### type of array 
+
+typeof fruits ----> object 
+
+### how to check if it's really array, as every reference is of type fruits.. 
+
+Array.isArray(fruits) ----> 
+
+
+### methods in array 
+push,pop  ---> they are methods that can mutate array
+## this doesn't happen in premitive datatype meaning string etc....
+
+fruits.push("grapes");
+let last_element = fruits.pop();
+
+### adding element at starting 
+
+fruits.unshift("banana"); ... adds new eleemnt at start 
+
+fruits.shift() ----> remove element from start.. 
+
+#### push and pop are faster, compared to shift and unshift.. 
+
+
+### premitive and reference type variables 
+
+let num1 = 6; 
+let num2 = num1; 
+
+num2 = 7; ## won't change num1... as it's premitive so they are created new.. 
+
+let arr1 = [1]
+let arr2 = arr[1] 
+arr1.push(2) 
+will alter arr2 too, as they are storing references.. 
+
+
+Premitives are stored in stack...  they don't take lots of memory, so they are copied in each operation instead modiying tehmselves
+reference types are stored in Heap... they are heavy, when copied they stores refenrece ( address ), so refers same item.
+
+to check if they refers same thing we can use 
+
+if(array1 === array2) .... ? checks if they are exact same object in memory
+if we want deep comparision -----> we need to stringify so whole string/structure/values are compared..
+
+#### creating a clone.... 
+
+let arr2 = arr1.slice(0); ---> slice of array returned as new object starting with index 0.
+
+let arr2 = [].concat(arr1) ---> this concatenates arr1 to a emtpy array and returns that emtpy array with values.
+
+# new way. spread operator
+
+let array2 = [...array1] ------ it's like mannually writing all values... ( slice is better, this used more as more redable)
+
+### clone and add few more items 
+
+let arr2 = arr1.slice(0).concat(["item3","item4"])
+            = [...arr1, "item4","item5"]
+
+
+### for loop in array.. it iterate it's elements.. 
+
+for(let i=0; i<fruits.length; i+=1) {
+    console.log(arr1[i].toUpperCase());
+}
+
+##### using const for creating array
+
+const fruits = [...]
+fruits.push("s") ----> this is also a valid thing 
+
+because fruits is a refenrece, we can't change it's reference but we can change values.
+
+fruits = ["new array"] ----> this is error, as how we are trying to change reference... 
+const are safer for reference type..
+
+
+
+#### for of loop ---- 
+
+for( let fruit of fruits) {
+    cosole.log(fruit);
+}
+
+#### for in loop  ----- avoids explicitly wroting for loop ending till length.. 
+for(let index in fruits) {
+    console.log(fruits[index]);
+}
+
+#### array destructuring.... 
+
+spliting array into indivisual elements, that can be used to copy or stuff like that.. 
+
+let [myvar1, myvar2] = myArray; 
+
+it simplifying decraring 2 variables and then initializing it to some index.. 
+
+case : 
+if myArray is of larger size, only 2 elements copied
+if array is of smaller size, then remaining variable becomes undefined 
+if we need value at some index 
+    let [myvar1, , myvar2] = myArray
+if we want rest all values in some other variable, also it should be type array 
+    let [myvar1, myvar2, ...myNewArray] = myArray;
+
+
+###### objects in JS .....
+they are used to store data in key-value pairs... 
+
+const person = {
+    name : "harshit", age : 22
+};
+
+### object formed using curly bracse is called object literal.
+
+we can access using 
+
+person.key ------ ( key is also called properties...)
+
+#### modifying object 
+1. how to add key value pair
+person.gender = "male";
+person["person"] = [1,2,3];
+
+2. accesing key , in JS key is by default in form of key, we needno't specify explicitly in literal 
+person["name"] ------
+person.name
+
+cases : 
+if we want key to have spaces *** we need to use key_notation dot notation won't work. we need to consider it as string.
+
+let key = "something; 
+person[key] = "thing"
+. now key is going to be computed, meaning value of key(something) is going to be our key. 
+
+
+#### iterating objects ... 
+___ for in loop
+
+for(let key in person){
+    person[key] ----> so value of key is used as key to find value in key.
+    console.log(`${key} : ${person[key]}`);
+    console.log(key,person[key])
+}
+
+____ using object.keys 
+
+Object.keys(persno) ---> returns a array with keys.. 
+
+we can check it's type using Array.isArray(Ojbect.keys(person))
+
+for(let key of Object.keys(person)) {
+    ....
+}
+
+###### spread operators 
+iterables are going to be spreaded like this ..
+
+[...array, new1, new2]
+[..."abc", "d",  "e"]
+
+
+how does it works in object. 
+
+*** in objects there can't be more than 1 key. if we write it again, then obviosly later value will be stored. 
+
+objects spreads like they are initialized, key : "value, .... like this.. 
+
+newObject = [...object1, ..ojbect2 , keynew : "valuenew"] 
+// if similar keys are there, then object2 value will take preference.
+
+
+if we do it like this 
+
+newObject = [..."abc"] ----> then index 0,1,2 becomes key, and a,b,c are taken as values.... 
+
+that way we can convert our array into objects .. 
+
+newObject = { ...["item1", "item2"]}  ---- easy way to make values with numeric indices of 0...n 
+
+
+
+##### object destrucuring... 
+
+const {bandName, famousSong} = band; ( key's value are stored in these variables...)
+
+* if we have more keys, then they won't give any affect.. 
+* if we don't want variable name same as key, we can do it like this 
+    let {bandName:var1, famousSong : var2, ...restPropsInObject} = band;
+
+
+###### let's see array inside object for netted destructuring.. 
+
+const users = [
+    {
+        name : "x",
+        age : 2
+    },
+    {
+        name : "y",
+        age : 3
+    }
+];
+
+** destructuring from inside array
+const [ user1, user2] = users
+
+** let user1.name, user2.age. 
+
+cosnt [{name:user1Name}, , {age}] = users; 
+
+
+##### 43
+
+##### declaring functions in JS
+
+function isEven(number) {
+    if(number%2 == 0){
+        return true;
+    }
+    return false;
+}
+
+##### function expression 
+
+const isEven = Function(number) {
+    if(number%2 == 0) return true;
+    return false;
+}
+
+#### arrow functions. 
+we just avoid using Function by using => after () 
+
+const firstChar = (anyString) => { return anyString[0]};
+
+### when we have single parameter then we can avoid brackets
+
+const isEven = number => { return number%2 == 0};
+
+### if we have single return statement we can event avoid it. 
+
+const isEven = number => number%2 == 0; ----> consider like converts number to number%2 === 0
+
+
+### Hoisting .... 
+
+if function defined like 
+    function(){
+
+    }
+
+it can even be refered before declaration.... 
+
+
+## but if you are using expression or something like that to declarate it in a variable, then it can't be 
+const func = function() { }
+
+
+#### remember 
+
+if we use let, const to define some variable, then accessing it before declaration is a error 
+but if we use var, then accessing it before declaration just makes it undefined.
+
+
+## lexical environment.....
+
+whenever we use some variable, first it searches for it in local memory, if not found then in outer memory, and so on till global memory.
+
+if variable not found in any memory, then it's error.
+
+so if it finds a local variable with same name as global variable, then local variable is used. 
+
+##### block scope vs function scope
+
+variables defined using let and const are block scoped... 
+variables defined using var are function scoped...
+
+block scope means inside if, for , while etc... 
+
+function scope means inside function only...
+
+so if we define variable using var inside if block, then outside if block it's accessible.. 
+but if we define variable using let inside if block, then outside if block it's not accessible...
+
+### try creating function with var inside it, and call it twice, it retains value from previous call...
+### will it create again, as var is function scoped... yes it creates again, but as var is hoisted, so previous value is retained...
+what does it mean var is hoiisted... it means variable is created at top of function with undefined value, so when we assign value to it, it retains previous value from last call...
+
+
+
+##### default parameters 
+
+function sum(a,b=0){
+    // previously 
+    if(typeof b === 'undefined'){
+        b = 0;
+    }
+    return a+b;
+}
+
+##### rest parameters, remaining all parameters. 
+
+function sumAll(...numbers){
+    // numbers is an array of all parameters passed
+    let sum = 0;
+    for(let number of numbers){
+        sum += number;
+    }
+    return sum;
+}
+
+##### parameter destructuring 
+
+function printDetails({name, age, gender}){
+    console.log(name, age, gender);
+}
+
+let person = {
+    name : "harshit",
+    age : 22,
+    gender : "male"
+};
+
+printDetails(person);
+## it's same destructuring that we did for objects earlier... 
+
+##### callback functions 
+
+function greet(name, callback){
+    console.log("Hello ", name);
+    callback();
+}
+
+function callMe(){
+    console.log("I am callback function");
+}
+
+greet("harshit", callMe);
+
+##### functions returning functions
+
+function multiplyBy(factor){
+    return function(number){
+        return number * factor;
+    }
+}
+
+let multiplyByTwo = multiplyBy(2);
+console.log(multiplyByTwo(5)); // 10
+
+let multiplyByThree = multiplyBy(3);
+console.log(multiplyByThree(5)); // 15
+
+# it kind of hides factor variable in closure... 
+
+
+
+
+
+
+####################### array methods 
+
+let's we have to call a funtion for each element of array...
+it's return value is not stored anywhere..
+
+array.forEach( callbackFunction )
+
+let numbers = [1,2,3,4,5];
+numbers.forEach(function(number, index){
+    console.log(number, index);
+});
+
+it also works on objects... 
+
+let person = {
+    name : "harshit",
+    age : 22,
+    gender : "male"
+};
+
+Object.keys(person).forEach(function(key){
+    console.log(key, person[key]);
+});
+
+
+##### map function
+
+let numbers = [1,2,3,4,5];
+let squares = numbers.map(function(number){
+    return number * number;
+});
+console.log(squares); // [1,4,9,16,25] --- creates a new array with return values.
+---- by default return is undefined
+
+##### filter function
+
+let numbers = [1,2,3,4,5,6];
+let evenNumbers = numbers.filter(function(number){
+    return number % 2 == 0;
+});
+console.log(evenNumbers); // [2,4,6] --- creates a new array with elements satisfying condition.
+
+##### reduce function
+
+let numbers = [1,2,3,4,5];
+let sum = numbers.reduce(function(accumulator, currentValue){
+    return accumulator + currentValue;
+}, 0); // 0 is initial value of accumulator
+// if no initial value given, then first element is taken as initial value and iteration starts from 2nd element.
+console.log(sum); // 15 --- reduces array to single value by applying function.
+
+##### find function
+
+let numbers = [1,2,3,4,5];
+let firstEven = numbers.find(function(number){
+    return number % 2 == 0;
+});
+console.log(firstEven); // 2 --- returns first element satisfying condition.
+
+##### some and every functions
+
+let numbers = [1,2,3,4,5];
+let hasEven = numbers.some(function(number){
+    return number % 2 == 0;
+});
+console.log(hasEven); // true --- checks if any element satisfies condition.
+
+let allEven = numbers.every(function(number){
+    return number % 2 == 0;
+});
+console.log(allEven); // false --- checks if all elements satisfy condition.    
+
+
+
+##### sort method , this change original array
+let numbers = [5,3,8,1,2];
+
+default sort is lexicographical
+numbers.sort();
+console.log(numbers); // [1,2,3,5,8] but for [10,2,3] it gives [10,2,3] as 1 comes before 2 lexicographically
+
+how does it works?
+if a-b > 0 then b comes before a
+if a-b < 0 then a comes before b
+if a-b == 0 then no change
+-ve mean don't swap 
+
+numbers.sort(function(a,b){
+    return a - b; // ascending order
+});
+console.log(numbers); // [1,2,3,5,8]
+
+numbers.sort(function(a,b){
+    return b - a; // descending order
+});
+console.log(numbers); // [8,5,3,2,1]        
+
+## let's we don't want to change original array, then we can use spread operator or slice to create a copy
+let sortedNumbers = [...numbers].sort(function(a,b){
+    return a - b;
+}
+or 
+let sortedNumbers = numbers.slice().sort(function(a,b){
+    return a - b;
+});
+
+
+##### find method to find index of element satisfying condition
+we can also use find() to find first value satisfying condition, but if we want index of that element, then we can use findIndex()
+
+let numbers = [1,2,3,4,5];
+let firstEvenIndex = numbers.findIndex(function(number){
+    return number % 2 == 0;
+});
+console.log(firstEvenIndex); // 1 --- returns index of first element satisfying condition.      
+
+const myUser = users.find((user) => user.userId == 3);
+
+
+##### fill method 
+used to initialize array with some value
+let arr = new Array(5); // creates array of size 5 with undefined values
+arr.fill(0); // fills all elements with 0
+console.log(arr); // [0,0,0,0,0]
+
+let arr2 = new Array(5).fill(1); // creates array of size 5 with all elements as 1
+console.log(arr2); // [1,1,1,1,1]
+
+let arr3 = [1,2,3,4,5];
+arr3.fill(0, 1, 4); // fills elements from index 1 to 3 with 0
+console.log(arr3); // [1,0,0,0,5]
+
+
+##### slice to insert or delete elements in array without mutating original array
+let arr = [1,2,3,4,5];
+let newArr = [...arr.slice(0,2), 10, 20, ...arr.slice(2)];
+console.log(newArr); // [1,2,10,20,3,4,5] --- inserts 10 and 20 at index 2
+
+let newArr2 = [...arr.slice(0,2), ...arr.slice(3)];
+console.log(newArr2); // [1,2,4,5] --- deletes element at index 2   
+
+##### splice method to insert or delete elements in array mutating original array
+let arr = [1,2,3,4,5];
+arr.splice(2, 0, 10, 20); // inserts 10 and 20 at index 2
+console.log(arr); // [1,2,10,20,3,4,5]
+
+arr.splice(2, 2); // deletes 2 elements from index 2
+console.log(arr); // [1,2,4,5]
+
+
+##### iterables and array like objects 
