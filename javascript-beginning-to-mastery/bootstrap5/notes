@@ -201,10 +201,12 @@ we can override that default behaviour
     const form = documen.querySelector('form')
 
     form.addEventListner('submit', e => {
-        e.preventDefault(); // prevent from submitting.
+        if(!form.checkValidity()) {
+            e.preventDefault();
+        }
+        form.classList.add('was-validated'); // add this class to form... 
     })
 
-    form.classList.add('was-validated'); // add this class to form... 
 </script>
 
 then once we click on submit, it starts showing is form-validations... 
