@@ -10,26 +10,13 @@
 </head>
   <body>
     <div class="container mt-5">
-        <button class="btn btn-outline-danger mb-3" id = 'myBtn'>trigger alert</button>
-        <div class="alert alert-dark alert-dismissible" id="myAlert" role="alert">
-            Alert
-            <button class="btn btn-close" data-bs-dismiss="alert"></button>
+        <div class="card" style = 'width: 40rem;'>
+            <img src="../../frontEndMentor/bento-grid-main/preview.jpg" class="card-img-top" alt="...">
+            <div class="card-header">Card Header</div>
+            <div class="card-body">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde eum, vitae ratione repudiandae sapiente voluptate odit id, cum blanditiis debitis excepturi obcaecati. Voluptas natus error commodi fuga nobis. Veniam esse incidunt itaque minus asperiores ullam, mollitia necessitatibus saepe odio quis ipsum accusantium accusamus earum magnam aspernatur adipisci fugit cum nulla iure cumque? Laboriosam, corporis. Dignissimos sint facere vitae ea quod sit. Nisi magnam numquam consequatur necessitatibus nulla alias quia rerum quo ipsam explicabo consequuntur tempora facere eligendi laudantium veritatis eaque dolores vel iusto reprehenderit rem, amet repellendus modi dolor assumenda. Facilis, repellat. Explicabo accusantium ipsam mollitia provident? Veritatis, necessitatibus id.
+            </div>
         </div>
     </div>
-    <script>
-        const btn = document.getElementById('myBtn');
-        btn.addEventListener('click', () => {
-            const alertBox = document.getElementById('myAlert');
-            if(alertBox.classList.contains('show')){
-                alertBox.classList.remove('show');
-                alertBox.classList.add('fade');
-                return;
-            }
-            else{
-                alertBox.classList.remove('fade');
-                alertBox.classList.add('show');
-            }
-        })
-    </script>
 </body>
 </html>
