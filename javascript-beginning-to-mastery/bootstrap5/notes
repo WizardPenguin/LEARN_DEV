@@ -315,8 +315,6 @@ div.card-group
             .modal-footer 
                 <button class = 'btn btn-primary' data-bs-dismiss = 'modal'> close </button>
 
-
-
 # collapse 
 
 allows us to show and hide some components 
