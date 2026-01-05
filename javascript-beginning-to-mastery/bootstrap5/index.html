@@ -10,29 +10,51 @@
 </head>
   <body>
     <!-- below large screen size it starting fluiding -->
-    <div class="container-lg container-fluid">
-        <h1>Hello, world!</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, voluptate id iste explicabo reprehenderit nisi a incidunt quis dolore expedita tempore obcaecati cupiditate aperiam maiores dolorum, aliquid rem facere error veritatis ad. Molestias, impedit ipsam ipsum corrupti autem mollitia quod, quasi cum repellat vitae dolore recusandae odit quos nobis accusamus sit alias laboriosam animi, ab at! Aspernatur deserunt vitae facere aliquam asperiores deleniti nulla in ducimus ex sit veniam soluta autem omnis ea officia, iure a fugit adipisci minima illum consequatur voluptatem repellendus quis. Optio officiis nihil, odit reprehenderit fugiat qui. Consequuntur, vitae eligendi necessitatibus commodi rem asperiores tempora corporis? Quo eaque aliquid esse alias voluptatum, nisi quasi dolore minus laborum, quaerat ut labore, sunt incidunt consequatur iusto recusandae vel aut velit qui eum ipsam vitae unde similique dignissimos! Eos ratione beatae excepturi amet labore similique, iusto provident a incidunt, ipsa reiciendis earum, error cupiditate ab! Dolore fugiat laborum mollitia ea alias veniam. Natus, ipsum suscipit mollitia numquam odit, nostrum, consectetur deserunt voluptatem animi repellendus eveniet? Quaerat est temporibus ad aliquam repellat dolorum hic laboriosam, consequuntur dignissimos totam, adipisci eum qui voluptate porro similique nulla ipsa a modi beatae? Fugiat quisquam voluptas error necessitatibus ipsa iste natus alias autem molestiae et sint officiis id quos dolorem non dolores mollitia quibusdam, aliquid illo minus voluptatibus dolore. Harum voluptatibus fugit voluptas dolorum accusamus? Numquam consequatur suscipit minus, et dolore dolorem. Quis id consequuntur, magni quia deserunt, magnam molestiae error qui debitis assumenda ab. Numquam repellendus quos assumenda expedita consequuntur alias perspiciatis consequatur obcaecati, optio deleniti magnam, ratione soluta iste ullam voluptatibus beatae velit. Fuga consequatur illum ratione nemo adipisci id omnis, minima quos corrupti facere neque ipsam voluptas ipsa quod dolorum, minus fugit fugiat voluptatibus? Iure, voluptatibus magnam. Officia sint reprehenderit eos, tenetur aliquam odit eius, corporis ducimus consequatur accusamus laudantium cum.</p>
-        <table class="table table-bordered table-dark">
-            <thead>
-                <tr class = 'table-active'>
-                    <td>Table data 1</td>
-                    <td>Table data 2</td>
-                    <td>Table data 3</td>
-                </tr>
-            </thead>
-            <tbody class = 'table-group-divider'>
-                <tr>
-                    <td>Table data 4</td>
-                    <td>Table data 5</td>
-                    <td>Table data 6</td>
-                </tr>
-                <tr>
-                    <td>Table data 7</td>
-                    <td>Table data 8</td>
-                    <td>Table data 9</td>
-                </tr>
-        </table>
+    <div class="container mt-5">
+        <div class="row gy-3">
+            <div class="col offset-3 col-6">
+                <form>
+                    <label for='email' class = 'form-label'> Email </label>
+                    <input type="email" id="email" class = 'form-control' placeholder = 'enter email'>
+                    <button> Submit </button>
+                </form>
+            </div>
+            <div class="col offset-3 col-6">
+                <form>
+                    <label for='email' class = 'form-label'> Email </label>
+                    <input type="color" id="email" class = 'form-control-color' placeholder = 'enter email'>
+                    <button class = 'btn btn-dark'> Submit </button>
+                </form>
+            </div>
+            <div class="col offset-3 col-6">
+                <form>
+                    <label for='email' class = 'form-label'> Email </label>
+                    <input type="range" id="email" class = 'form-range' placeholder = 'enter email' disabled>
+                    <button class = 'btn btn-dark'> Submit </button>
+                </form>
+            </div>
+            <div class="col offset-3 col-6">
+                <form>
+                    <div class="form-check form-switch">
+                        <input type="checkbox" id="check" class = 'form-check-input' placeholder = 'enter email'>
+                        <label for='check' class = 'form-check-label'> Email </label>
+                    </div>
+                    <button class = 'd-block btn btn-dark mt-3'> Submit </button>
+                </form>
+            </div>
+            <div class="col offset-3 col-6">
+                <form>
+                    <label for='text' class = 'form-label'> Input Group </label>
+                    <div class="input-group">
+                        <input type="text" id="text" class = 'form-control' placeholder = 'enter something'>
+                        <div class="input-group-text">$</div>
+                        <input type="text" id="text2" class = 'form-control' placeholder = 'enter something else'>
+                        <div class="input-group-text">.00</div>
+                        <div class="btn btn-primary">+</div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>   
 </body>
 </html>
