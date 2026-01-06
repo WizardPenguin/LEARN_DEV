@@ -358,6 +358,8 @@ nav-link === active/disabled etc...
     background = bg-dark 
     then we can also set navbar coloring for dark using 
     navbar-dark. 
+use nabvar-dark + bg-dark
+
 
 ## collapsing navbar 
 if we remove navbar-expanded it's going to be shown in collapsed manner 
