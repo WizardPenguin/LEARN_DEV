@@ -1153,6 +1153,7 @@ createUser.prototype.greet = function() {
 // they also follow this convension.
 class User {
     constructor(name, age) {
+        /// this creates empty object and passes as this.
         /// using new keyword here makes this = Object.create(User.prototype)
         this.name = name;
         this.age = age;
@@ -1163,4 +1164,183 @@ class User {
     }
 }
 
+### iterating keys over objet created by constructor function gives keys of prototype also
+let user1 = new User("John", 30);
+for(let key in user1) {
+    console.log(key); // name, age, greet
+}
+### to avoid this we can use hasOwnProperty method
+for(let key in user1) {
+    if(user1.hasOwnProperty(key)) {
+        console.log(key); // name, age
+    }
+}
 
+##### getting prototype of object
+
+let proto = Object.getPrototypeOf(user1);
+
+##### inheritance in classes
+
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+    speak() {
+        console.log(this.name + " makes a noise.");
+    }
+}
+
+class Dog extends Animal {
+    constructor(name) {
+        super(name); // call super class constructor
+    }
+    speak() {
+        console.log(this.name + " barks.");
+    }
+}
+
+let dog = new Dog("Buddy");
+dog.speak(); // Buddy barks.
+
+##### getters and setters in classes
+
+class Rectangle {
+    constructor(width, height) {
+        this.width = width;
+        this.height = height;
+    }
+    get area() {
+        return this.width * this.height;
+    }
+    set area(value) {
+        this.width = Math.sqrt(value);
+        this.height = Math.sqrt(value);
+    }
+}
+
+let rect = new Rectangle(4, 5);
+console.log(rect.area); // 20
+
+rect.area = 36;
+console.log(rect.width); // 6
+console.log(rect.height); // 6
+
+// getters and setters allow us to define computed properties and control access to object properties
+
+##### how javascript engine works
+
+JavaScript engine is a program that executes JavaScript code. It consists of several components that work together to parse, compile, and execute the code.
+
+1. Parser: The parser reads the JavaScript code and converts it into an Abstract Syntax Tree (AST). The AST is a tree-like structure that represents the syntactic structure of the code.
+
+2. Compiler: The compiler takes the AST and converts it into bytecode or machine code that can be executed by the JavaScript engine. Modern JavaScript engines use Just-In-Time (JIT) compilation to optimize the code during runtime.
+    for early error checking and determining appropriate scope for variables.
+
+3. Execution Context: The execution context is the environment in which the JavaScript code is executed. It consists of the variable object, scope chain, and this value. Each time a function is called, a new execution context is created.
+
+4. Call Stack: The call stack is a data structure that keeps track of the execution context of functions. When a function is called, its execution context is pushed onto the call stack. When the function returns, its execution context is popped off the stack.
+
+5. Memory Heap: The memory heap is a region of memory where objects and variables are stored. The JavaScript engine manages memory allocation and garbage collection to free up memory that is no longer needed.
+
+6. Event Loop: The event loop is responsible for handling asynchronous operations in JavaScript. It continuously checks the call stack and the task queue for any pending tasks and executes them when the call stack is empty.`
+
+#### hoisting in JS
+
+js already knows which variable has what scope before executing code ( during compilation)
+so it allocates memory for variables and functions before executing code.
+
+1. Variable Hoisting:
+   - Variables declared with var are hoisted to the top of their function scope and initialized with undefined.
+   - Variables declared with let and const are hoisted to the top of their block scope but are not initialized. Accessing them before declaration results in a ReferenceError.
+
+2. Function Hoisting:
+   - Function declarations are hoisted to the top of their scope and can be called before they are defined.
+   - Function expressions (including arrow functions) assigned to variables are not hoisted. Accessing them before declaration results in a ReferenceError.
+
+// Example of variable hoisting
+console.log(x); // undefined
+var x = 5;
+
+console.log(y); // ReferenceError: Cannot access 'y' before initialization, in global execution context they are uninitialized. 
+// they are present in memory but uninitialized.
+// time period between creation phase and execution phase is called temporal dead zone
+// meaning till variable is initialized, it is in dead zone
+// if it was not present in memory, then it would be ReferenceError: x is not defined
+typeof y; // ReferenceError: Cannot access 'y' before initialization
+but if it's not initatilized even after this phase, then typeof gives undefined
+let y = 10;
+
+// Example of function hoisting
+greet(); // "Hello!"
+function greet() {
+    console.log("Hello!");
+}
+
+farewell(); // TypeError: farewell is not a function
+var farewell = function() {
+    console.log("Goodbye!");
+};
+
+// Understanding hoisting helps avoid unexpected behaviors in JavaScript code.
+
+##### scope chain in JS
+
+Scope chain is the hierarchy of scopes that determines the accessibility of variables and functions in JavaScript. When a variable or function is referenced, the JavaScript engine looks for it in the current scope and then moves up the scope chain until it finds the reference or reaches the global scope.
+
+1. Global Scope: Variables and functions declared outside of any function or block are in the global scope and can be accessed from anywhere in the code.
+
+2. Function Scope: Each function creates a new scope. Variables and functions declared within a function are only accessible within that function and its nested functions.
+
+3. Block Scope: Variables declared with let and const within a block (e.g., if, for, while) are only accessible within that block.
+
+###### global execution context
+
+When a JavaScript program starts executing, the global execution context is created. It consists of two phases: the creation phase and the execution phase.
+
+1. Creation Phase:
+   - The JavaScript engine creates the global object (window in browsers, global in Node.js).
+   - It creates the 'this' keyword, which refers to the global object.
+   - It allocates memory for variables and functions declared with var, let, const, and function declarations. Variables declared with var are initialized with undefined, while let and const are not initialized.
+
+2. Execution Phase:
+   - The JavaScript engine executes the code line by line.
+   - It assigns values to variables and executes functions as they are called.
+
+// Example of global execution context
+var x = 10;
+let y = 20;
+function greet() {
+    console.log("Hello!");
+}
+
+greet(); // "Hello!"
+
+// Understanding the global execution context helps in managing variable scope and avoiding conflicts in JavaScript code.   
+##### function execution context
+
+When a function is called, a new function execution context is created. It also consists of two phases: the creation phase and the execution phase.
+
+1. Creation Phase:
+   - The JavaScript engine creates a new variable object for the function.
+   - It creates the 'this' keyword, which refers to the object that called the function (or undefined in strict mode).
+   - It allocates memory for parameters and variables declared with var, let, const, and function declarations within the function. Parameters are initialized with the values passed to the function, variables declared with var are initialized with undefined, while let and const are not initialized.
+
+2. Execution Phase:
+   - The JavaScript engine executes the code within the function line by line.
+   - It assigns values to parameters and variables as they are encountered in the code.
+
+// Example of function execution context
+function add(a, b) {
+    cosole.log(arguments); // [5, 10] not array, but array like object
+    var sum = a + b;
+    return sum;
+}
+
+let result = add(5, 10);
+console.log(result); // 15
+
+##### closures in JS 
+##### create a function that will return a function which can be called only once 
+##### what happens is child function saves reference to variables of parent, meaning their changes are sustained
+ 
