@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>todo list</title>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <h1 class="logo">Todo List</h1>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Todo</a></li>
+                <li><a href="#">Sign</a></li>
+            </ul>
+        </nav>
+        <div class="headline">
+            <h2>Manage Your Tasks Efficiently</h2>
+            <button class="btn btn-headline">Learn More</button>
+        </div>
+    </header>
+    <section class="todo-section container">
+        <h2>your plan for today?</h2>
+        <form action="" class="form-todo">
+            <input type="text" name = "todo" id = "todo-input" placeholder="Add Todo">
+            <input type="submit" value="Add Todo" class="btn btn-add">
+        </form>
+    </section>
+    <section class="section-signup container">
+        <h2>Sign Up</h2>
+        <form action="" class="form-signup">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm password</label>
+                <input type="password" name="confirm-password" id="confirm-password">
+            </div>
+            <input type="submit" value="Sign Up" class="btn btn-signup">
+        </form>
+    </section>
+</body>
+</html>

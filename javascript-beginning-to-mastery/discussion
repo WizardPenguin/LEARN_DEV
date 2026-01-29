@@ -155,3 +155,863 @@
 
 
 
+##### iterables and array like objects 
+
+iterables are objects that can be iterated over, such as arrays, strings, maps, sets etc.
+we can use for...of loop to iterate over iterables
+
+let str = "hello";
+for(let char of str){
+    console.log(char);
+}
+
+array like objects are objects that have length property and indexed elements, such as arguments object, NodeList etc.
+we can convert array like objects to arrays using Array.from() or spread operator
+
+function myFunc(){
+    let argsArray = Array.from(arguments);
+    // or let argsArray = [...arguments];
+    console.log(argsArray);
+}
+myFunc(1,2,3); // [1,2,3]
+
+##### sets in JS
+sets are collections of unique values, they can store any type of values, whether primitive or reference types.
+we can create a set using new Set() and add values using add() method.
+
+let mySet = new Set();
+mySet.add(1);
+mySet.add(2);
+mySet.add(2); // duplicate value, won't be added
+console.log(mySet); // Set {1,2}
+
+we can check if a value exists in set using has() method
+console.log(mySet.has(1)); // true
+console.log(mySet.has(3)); // false
+
+we can delete a value from set using delete() method
+mySet.delete(1);
+console.log(mySet); // Set {2}
+
+we can get size of set using size property
+console.log(mySet.size); // 1
+
+we can iterate over set using for...of loop
+for(let value of mySet){
+    console.log(value);
+} // 2
+
+we can convert set to array using Array.from() or spread operator
+let myArray = Array.from(mySet);
+// or let myArray = [...mySet];
+console.log(myArray); // [2]
+
+
+## object in JS 
+
+Objects are collections of key-value pairs, where keys are strings (or symbols) and values can be any type of data,
+including other objects or functions.
+
+let person = {
+    name: "John",
+    age: 30,
+    isStudent: false,
+    greet: function() {
+        console.log("Hello, my name is " + this.name);
+    }
+};
+
+we can access object properties using dot notation or bracket notation
+console.log(person.name); // John
+console.log(person["age"]); // 30
+
+we can add new properties to object
+person.gender = "male";      
+person["country"] = "USA";
+
+we can delete properties from object
+delete person.isStudent;
+
+we can iterate over object properties using for...in loop
+for(let key in person){
+    console.log(key + ": " + person[key]);
+}
+
+we can get array of object keys using Object.keys()
+let keys = Object.keys(person);
+console.log(keys); // ["name", "age", "greet", "gender", "country"]
+
+we can get array of object values using Object.values()
+let values = Object.values(person);
+console.log(values); // ["John", 30, function() { ... }, "male", "USA"] 
+
+we can get array of object entries using Object.entries()
+let entries = Object.entries(person);   
+console.log(entries); // [["name", "John"], ["age", 30], ["greet", function() { ... }], ["gender", "male"], ["country", "USA"]]
+
+
+###### map in JS
+
+Maps are collections of key-value pairs, where keys can be of any type, including objects or functions.
+
+let myMap = new Map();
+myMap.set("name", "John");
+myMap.set(1, "one");
+myMap.set(true, "boolean true");
+
+we can get value from map using get() method
+console.log(myMap.get("name")); // John
+console.log(myMap.get(1)); // one
+
+we can check if a key exists in map using has() method
+console.log(myMap.has(true)); // true
+console.log(myMap.has(false)); // false
+
+we can delete a key-value pair from map using delete() method
+myMap.delete(1);
+console.log(myMap.has(1)); // false
+
+we can get size of map using size property
+console.log(myMap.size); // 2
+
+we can iterate over map using for...of loop
+for(let [key, value] of myMap){
+    console.log(key + ": " + value);
+} // name: John, true: boolean true
+
+we can convert map to array using Array.from() or spread operator
+let myArray = Array.from(myMap);
+// or let myArray = [...myMap];
+console.log(myArray); // [["name", "John"], [true, "boolean true"]]
+
+**** for in vs for of
+for...in loop is used to iterate over object properties, it gives keys of the object.
+for...of loop is used to iterate over iterable objects like arrays, strings, maps, sets etc., it gives values of the iterable.
+
+
+#### cloning object 
+
+let original = { a: 1, b: 2, c: 3 };
+
+// spread operator
+let clone = { ...original };
+
+// using Object.assign()
+let clone1 = Object.assign({}, original);
+
+// using spread operator
+let clone2 = { ...original };
+
+// both clone1 and clone2 are shallow copies of original object
+
+##### deep cloning object
+
+let original = { a: 1, b: { c: 2 } };
+
+// using JSON methods
+let deepClone1 = JSON.parse(JSON.stringify(original));
+
+// using structuredClone (modern browsers)
+let deepClone2 = structuredClone(original);
+
+// both deepClone1 and deepClone2 are deep copies of original object    
+
+#### option chaining in JS
+
+let user = {
+    name: "John",
+    address: {
+        city: "New York",
+        zip: "10001"
+    }
+};
+
+// accessing nested property safely using optional chaining
+let city = user.address?.city;
+console.log(city); // New York
+
+// accessing non-existing nested property
+let country = user.address?.country;
+console.log(country); // undefined
+
+// calling method safely using optional chaining
+let greet = user.greet?.();
+console.log(greet); // undefined
+
+// accessing deeply nested property safely
+let zip = user.address?.zip?.code;
+console.log(zip); // undefined
+
+// optional chaining prevents runtime errors when accessing properties or methods of undefined or null values.
+
+##### methods in objects
+
+let calculator = {
+    add: function(a, b) {
+        return a + b;
+    },
+    subtract: function(a, b) {
+        return a - b;
+    },
+    multiply: function(a, b) {
+        return a * b;
+    },
+    divide: function(a, b) {
+        if(b !== 0) {
+            return a / b;
+        } else {
+            return "Cannot divide by zero";
+        }
+    }
+};
+
+console.log(calculator.add(5, 3)); // 8
+console.log(calculator.subtract(5, 3)); // 2
+console.log(calculator.multiply(5, 3)); // 15
+console.log(calculator.divide(5, 0)); // Cannot divide by zero
+
+##### ways to create methods 
+let obj = {
+    // method shorthand
+    greet() {
+        console.log("Hello!");
+    },
+    // arrow function (not recommended for methods)
+    farewell: () => {
+        console.log("Goodbye!");
+    }
+};
+
+obj.greet(); // Hello!
+obj.farewell(); // Goodbye!
+
+##### this keyword, how it works in methods
+
+let person = {
+    name: "John",
+    greet: function() {
+        console.log("Hello, my name is " + this.name);
+    },
+    farewell: () => {
+        console.log("Goodbye from " + this.name);
+    }
+};
+
+person.greet(); // Hello, my name is John
+person.farewell(); // Goodbye from undefined
+
+// in greet method, this refers to person object
+// in farewell method, this refers to global object (window in browsers), hence undefined
+
+##### binding this keyword
+
+let person = {
+    name: "John",
+    greet: function() {
+        console.log("Hello, my name is " + this.name);
+    }
+};
+
+let greetFunction = person.greet;
+greetFunction(); // Hello, my name is undefined
+
+// binding this to person object
+let boundGreet = greetFunction.bind(person);
+boundGreet(); // Hello, my name is John
+
+when we create function inside object, this refers to that object 
+function kind of binds to that object 
+
+this is what happens on variables, that's why they hoists 
+as calling function inside object, this refers to that object only...
+and that object has those variables at that time...
+
+function defined using  function  keyword binds this to that object
+this can be avoided using strict mode 
+function func() {
+    "use strict";
+    console.log(this); // undefined
+}
+
+##### call, apply and bind methods
+
+let person1 = {
+    name: "John",
+    greet: function(greeting) {
+        console.log(greeting + ", my name is " + this.name);
+    }
+};
+
+let person2 = {
+    name: "Jane"
+};
+
+// using call
+person1.greet.call(person2, "Hello"); // Hello, my name is Jane
+
+// using apply
+person1.greet.apply(person2, ["Hi"]); // Hi, my name is Jane
+
+// using bind
+let boundGreet = person1.greet.bind(person2, "Hey");
+boundGreet(); // Hey, my name is Jane
+
+// call and apply invoke the function immediately with specified this value and arguments
+// bind returns a new function with specified this value and arguments, which can be invoked later
+
+
+###### towards object oriented programming
+
+#### why needed 
+let's say we have to create multiple objects with same properties and methods
+
+let person1 = {
+    name: "John",
+    age: 30,
+    greet: function() {
+        console.log("Hello, my name is " + this.name);
+    }
+};
+
+let person2 = {
+    name: "Jane",
+    age: 25,
+    greet: function() {
+        console.log("Hello, my name is " + this.name);
+    }
+};
+
+// this approach is not scalable and leads to code duplication
+
+#### constructor functions
+
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+    this.greet = function() {
+        console.log("Hello, my name is " + this.name);
+    };
+}
+
+let person1 = new Person("John", 30);
+let person2 = new Person("Jane", 25);
+
+person1.greet(); // Hello, my name is John
+person2.greet(); // Hello, my name is Jane
+
+// constructor functions allow us to create multiple objects with same structure
+
+#### prototypes
+
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+Person.prototype.greet = function() {
+    console.log("Hello, my name is " + this.name);
+};
+
+let person1 = new Person("John", 30);
+let person2 = new Person("Jane", 25);
+
+// what and why is prototype in function object 
+person1.greet(); // Hello, my name is John ---- new automatically links __proto__ to Person.prototype
+person2.greet(); // Hello, my name is Jane
+
+// prototypes allow us to share methods among all instances of an object
+
+#### 3nd problem with constructor functions is that they are not very intuitive and can lead to confusion with this keyword.
+#### if we want to create a class with inheritance, we need to use __proto__ which is not recommended.
+// let's see how it happens
+function Animal(name) {
+    this.name = name;
+}
+
+Animal.prototype.speak = function() {
+    console.log(this.name + " makes a noise.");
+};
+
+function Dog(name) {
+    Animal.call(this, name); // call super constructor
+}
+Dog.prototype = Object.create(Animal.prototype); // inherit from Animal
+Dog.prototype.constructor = Dog;
+Dog.prototype.speak = function() {
+    console.log(this.name + " barks.");
+};
+
+let dog = new Dog("Buddy");
+dog.speak(); // Buddy barks.
+
+// this approach is cumbersome and not very readable
+
+#### object inheritence 
+let animal = {
+    speak: function() {
+        console.log(this.name + " makes a noise.");
+    }
+};
+
+let dog = Object.create(animal); // sets animal as prototype of dog __proto__
+dog.name = "Buddy";
+dog.speak(); // Buddy makes a noise.
+
+// this approach is cumbersome and not very readable
+
+#### classes solving these issues.... 
+
+default way was 
+
+function createUser(name, age) {
+    const user = Object.create(createUser.prototype);
+    user.name = name;
+    user.age = age;
+    return user;
+}
+createUser.prototype.greet = function() {
+    console.log("Hello, my name is " + this.name);
+};
+// now using class
+// convension to start class name with capital letter, and this is need New keyword to create object
+// constructor function is special function that is called when new object is created
+// they also follow this convension.
+class User {
+    constructor(name, age) {
+        /// this creates empty object and passes as this.
+        /// using new keyword here makes this = Object.create(User.prototype)
+        this.name = name;
+        this.age = age;
+        // automatically returns this
+    }
+    greet() {
+        console.log("Hello, my name is " + this.name);
+    }
+}
+
+### iterating keys over objet created by constructor function gives keys of prototype also
+let user1 = new User("John", 30);
+for(let key in user1) {
+    console.log(key); // name, age, greet
+}
+### to avoid this we can use hasOwnProperty method
+for(let key in user1) {
+    if(user1.hasOwnProperty(key)) {
+        console.log(key); // name, age
+    }
+}
+
+##### getting prototype of object
+
+let proto = Object.getPrototypeOf(user1);
+
+##### inheritance in classes
+
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+    speak() {
+        console.log(this.name + " makes a noise.");
+    }
+}
+
+class Dog extends Animal {
+    constructor(name) {
+        super(name); // call super class constructor
+    }
+    speak() {
+        console.log(this.name + " barks.");
+    }
+}
+
+let dog = new Dog("Buddy");
+dog.speak(); // Buddy barks.
+
+##### getters and setters in classes
+
+class Rectangle {
+    constructor(width, height) {
+        this.width = width;
+        this.height = height;
+    }
+    get area() {
+        return this.width * this.height;
+    }
+    set area(value) {
+        this.width = Math.sqrt(value);
+        this.height = Math.sqrt(value);
+    }
+}
+
+let rect = new Rectangle(4, 5);
+console.log(rect.area); // 20
+
+rect.area = 36;
+console.log(rect.width); // 6
+console.log(rect.height); // 6
+
+// getters and setters allow us to define computed properties and control access to object properties
+
+##### how javascript engine works
+
+JavaScript engine is a program that executes JavaScript code. It consists of several components that work together to parse, compile, and execute the code.
+
+1. Parser: The parser reads the JavaScript code and converts it into an Abstract Syntax Tree (AST). The AST is a tree-like structure that represents the syntactic structure of the code.
+
+2. Compiler: The compiler takes the AST and converts it into bytecode or machine code that can be executed by the JavaScript engine. Modern JavaScript engines use Just-In-Time (JIT) compilation to optimize the code during runtime.
+    for early error checking and determining appropriate scope for variables.
+
+3. Execution Context: The execution context is the environment in which the JavaScript code is executed. It consists of the variable object, scope chain, and this value. Each time a function is called, a new execution context is created.
+
+4. Call Stack: The call stack is a data structure that keeps track of the execution context of functions. When a function is called, its execution context is pushed onto the call stack. When the function returns, its execution context is popped off the stack.
+
+5. Memory Heap: The memory heap is a region of memory where objects and variables are stored. The JavaScript engine manages memory allocation and garbage collection to free up memory that is no longer needed.
+
+6. Event Loop: The event loop is responsible for handling asynchronous operations in JavaScript. It continuously checks the call stack and the task queue for any pending tasks and executes them when the call stack is empty.`
+
+#### hoisting in JS
+
+js already knows which variable has what scope before executing code ( during compilation)
+so it allocates memory for variables and functions before executing code.
+
+1. Variable Hoisting:
+   - Variables declared with var are hoisted to the top of their function scope and initialized with undefined.
+   - Variables declared with let and const are hoisted to the top of their block scope but are not initialized. Accessing them before declaration results in a ReferenceError.
+
+2. Function Hoisting:
+   - Function declarations are hoisted to the top of their scope and can be called before they are defined.
+   - Function expressions (including arrow functions) assigned to variables are not hoisted. Accessing them before declaration results in a ReferenceError.
+
+// Example of variable hoisting
+console.log(x); // undefined
+var x = 5;
+
+console.log(y); // ReferenceError: Cannot access 'y' before initialization, in global execution context they are uninitialized. 
+// they are present in memory but uninitialized.
+// time period between creation phase and execution phase is called temporal dead zone
+// meaning till variable is initialized, it is in dead zone
+// if it was not present in memory, then it would be ReferenceError: x is not defined
+typeof y; // ReferenceError: Cannot access 'y' before initialization
+but if it's not initatilized even after this phase, then typeof gives undefined
+let y = 10;
+
+// Example of function hoisting
+greet(); // "Hello!"
+function greet() {
+    console.log("Hello!");
+}
+
+farewell(); // TypeError: farewell is not a function
+var farewell = function() {
+    console.log("Goodbye!");
+};
+
+// Understanding hoisting helps avoid unexpected behaviors in JavaScript code.
+
+##### scope chain in JS
+
+Scope chain is the hierarchy of scopes that determines the accessibility of variables and functions in JavaScript. When a variable or function is referenced, the JavaScript engine looks for it in the current scope and then moves up the scope chain until it finds the reference or reaches the global scope.
+
+1. Global Scope: Variables and functions declared outside of any function or block are in the global scope and can be accessed from anywhere in the code.
+
+2. Function Scope: Each function creates a new scope. Variables and functions declared within a function are only accessible within that function and its nested functions.
+
+3. Block Scope: Variables declared with let and const within a block (e.g., if, for, while) are only accessible within that block.
+
+###### global execution context
+
+When a JavaScript program starts executing, the global execution context is created. It consists of two phases: the creation phase and the execution phase.
+
+1. Creation Phase:
+   - The JavaScript engine creates the global object (window in browsers, global in Node.js).
+   - It creates the 'this' keyword, which refers to the global object.
+   - It allocates memory for variables and functions declared with var, let, const, and function declarations. Variables declared with var are initialized with undefined, while let and const are not initialized.
+
+2. Execution Phase:
+   - The JavaScript engine executes the code line by line.
+   - It assigns values to variables and executes functions as they are called.
+
+// Example of global execution context
+var x = 10;
+let y = 20;
+function greet() {
+    console.log("Hello!");
+}
+
+greet(); // "Hello!"
+
+// Understanding the global execution context helps in managing variable scope and avoiding conflicts in JavaScript code.   
+##### function execution context
+
+When a function is called, a new function execution context is created. It also consists of two phases: the creation phase and the execution phase.
+
+1. Creation Phase:
+   - The JavaScript engine creates a new variable object for the function.
+   - It creates the 'this' keyword, which refers to the object that called the function (or undefined in strict mode).
+   - It allocates memory for parameters and variables declared with var, let, const, and function declarations within the function. Parameters are initialized with the values passed to the function, variables declared with var are initialized with undefined, while let and const are not initialized.
+
+2. Execution Phase:
+   - The JavaScript engine executes the code within the function line by line.
+   - It assigns values to parameters and variables as they are encountered in the code.
+
+// Example of function execution context
+function add(a, b) {
+    cosole.log(arguments); // [5, 10] not array, but array like object , indexed access and length property
+    var sum = a + b;
+    return sum;
+}
+
+let result = add(5, 10);
+console.log(result); // 15
+
+## lexical scope vs dynamic scope
+Lexical Scope:
+Lexical scope, also known as static scope, is determined by the structure of the code and the location of variable declarations.
+In lexical scope, a function can access variables from its own scope and from the scopes of its parent functions,
+based on where the function is defined in the code.  
+
+Dynamic Scope:
+Dynamic scope is determined by the call stack and the order in which functions are called at runtime.
+In dynamic scope, a function can access variables from its own scope and from the scopes of functions that are currently on the call stack,
+regardless of where the function was defined in the code.
+
+
+
+
+##### closures in JS 
+##### create a function that will return a function which can be called only once 
+##### what happens is child function saves reference to variables of parent, meaning their changes are sustained
+
+
+function printX(x) {
+    return function() {
+        console.log(x);
+    };
+}
+
+let printFive = printX(5);
+printFive(); // 5 
+
+##### private variables using closures
+function Counter() {
+    let count = 0; // private variable
+
+    this.increment = function() {
+        count++;
+        return count;
+    };
+
+    this.decrement = function() {
+        count--;
+        return count;
+    };
+
+    this.getCount = function() {
+        return count;
+    };
+}
+
+let counter = new Counter();
+console.log(counter.increment()); // 1
+console.log(counter.increment()); // 2
+console.log(counter.decrement()); // 1
+console.log(counter.getCount()); // 1
+
+
+##### module pattern using closures
+let CounterModule = (function() {
+    let count = 0; // private variable
+    return {
+        increment: function() {
+            count++;
+            return count;
+        },
+        decrement: function() {
+            count--;
+            return count;
+        },
+        getCount: function() {
+            return count;
+        }
+    };
+})();
+
+console.log(CounterModule.increment()); // 1
+console.log(CounterModule.increment()); // 2
+console.log(CounterModule.decrement()); // 1
+console.log(CounterModule.getCount()); // 1
+
+
+##### currying in JS using closures
+Currying is a technique in functional
+programming where a function with multiple arguments is transformed into a sequence of functions, each taking a single argument.
+
+function add(a) {
+    return function(b) {
+        return function(c) {
+            return a + b + c;
+        };
+    };
+}
+
+let result = add(1)(2)(3);
+console.log(result); // 6
+
+##### memoization in JS using closures
+Memoization is an optimization technique used to speed up 
+function calls by caching the results of expensive function calls and returning the cached result when the same inputs occur again.
+
+function memoize(fn) {
+    const cache = {};
+    return function(...args) {
+        const key = JSON.stringify(args);
+        if (cache[key]) {
+            return cache[key];
+        } else {
+            const result = fn(...args);
+            cache[key] = result;
+            return result;
+        }
+    };
+}
+
+function fibonacci(n) {
+    if (n <= 1) return n;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+const memoizedFibonacci = memoize(fibonacci);
+
+console.log(memoizedFibonacci(40)); // 102334155
+console.log(memoizedFibonacci(41)); // 165580141
+
+
+###### deep dive how closers work in JS, why closures are created, how they retain reference to outer variables
+Closures are created in JavaScript when a function is defined inside another function,
+allowing the inner function to access variables from the outer function's scope even after the outer function has finished executing.
+
+function outerFunction() {
+    let outerVariable = "I am from outer function";
+
+    function innerFunction() {
+        console.log(outerVariable);
+    }
+
+    return innerFunction;
+}
+
+let closureFunction = outerFunction();
+closureFunction(); // "I am from outer function"
+// In this example, innerFunction forms a closure that retains access to outerVariable
+// even after outerFunction has completed execution. This is because the inner function
+// maintains a reference to the outer function's scope, allowing it to access its variables.
+
+
+can memory leak happen due to closures ?
+Yes, memory leaks can occur due to closures in JavaScript.
+When a closure retains references to variables from its outer scope, those variables cannot be garbage collected
+as long as the closure exists. If the closure is kept alive longer than necessary, it can lead to increased memory usage and potential memory leaks.
+To avoid memory leaks caused by closures, it's important to ensure that closures are not retained longer than needed,
+and to nullify references to outer variables when they are no longer required.
+
+will closures retain updated value of outer variables or the value at the time of closure creation ?
+Closures in JavaScript retain references to the outer variables, not their values at the time of closure creation.
+This means that if the outer variable is updated after the closure is created, the closure will reflect the updated value when it is accessed.
+
+that means closures always retain the current value of outer variables, not a snapshot of their values at the time of closure creation.
+
+
+
+function func() {
+    let counter = 0;
+    return function() {
+        counter++;
+        console.log(counter);
+    };
+}
+
+let incrementCounter = func();
+let incrementCounter2 = func();
+
+### both function will be having their own separate closure with their own counter variable
+
+
+####### DOM manipulation using JS
+
+##### what is DOM
+The Document Object Model (DOM) is a programming interface for web documents. It represents the structure of a document as a tree of objects,
+allowing programming languages like JavaScript to manipulate the content, structure, and style of web pages dynamically.
+window.document is the root of the DOM tree, representing the entire HTML document.
+console.dir(window.document) shows the properties and methods of the document object.
+console.log(window.document) shows the HTML structure of the document.
+
+##### selecting elements in DOM
+// Selecting by ID
+let elementById = document.getElementById("myId");
+
+// Selecting by Class Name
+let elementsByClass = document.getElementsByClassName("myClass");
+
+// Selecting by Tag Name
+let elementsByTag = document.getElementsByTagName("div");
+
+// Selecting using Query Selector
+let firstElement = document.querySelector(".myClass");
+let allElements = document.querySelectorAll(".myClass");
+
+##### manipulating elements in DOM
+// Changing text content
+elementById.textContent = "New Text";
+
+// Changing HTML content
+elementById.innerHTML = "<strong>Bold Text</strong>";
+
+// Changing styles
+elementById.style.color = "red";
+elementById.style.fontSize = "20px";
+
+// Adding a class
+elementById.classList.add("newClass");
+
+// Removing a class
+elementById.classList.remove("myClass");
+
+// Toggling a class
+elementById.classList.toggle("activeClass");
+
+##### creating and removing elements in DOM
+// Creating a new element
+let newElement = document.createElement("p");
+newElement.textContent = "This is a new paragraph.";
+
+// Appending the new element to the body
+document.body.appendChild(newElement);  
+
+// Removing an element
+let elementToRemove = document.getElementById("removeMe");
+elementToRemove.parentNode.removeChild(elementToRemove);
+
+##### event handling in DOM
+// Adding an event listener
+let button = document.getElementById("myButton");
+button.addEventListener("click", function() {
+    alert("Button clicked!");
+});
+
+// Removing an event listener
+function handleClick() {
+    alert("Button clicked!");
+}
+button.addEventListener("click", handleClick);
+button.removeEventListener("click", handleClick);
+
+
+##### including external JS file in HTML
+<script src="path/to/your/script.js"></script>
+this is sync JS synchronous loading of JS file --- executed when encountered
+
+<script async src="path/to/your/script.js"></script>
+this is async JS asynchronous loading of JS file --- executed whenever it is loaded
+
+<script defer src="path/to/your/script.js"></script>
+this is defer JS defer loading of JS file --- executed after HTML is parsed

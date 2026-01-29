@@ -5,7 +5,7 @@ extension : HTML CSS Support
 
 .conatiner ---> adds padding on screen automatically for it's data
 
-it's made responsive for small,medium,small, extra larger, extra extra large.... etc screen sizes
+it's made responsive for large,medium,small, extra larger, extra extra large.... etc screen sizes
 
 container-md ---- if we set class to breakpoint 
 others are container-fluid container-lg container-md container-sm container-xl container-xxl

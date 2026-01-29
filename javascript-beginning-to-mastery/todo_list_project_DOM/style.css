@@ -1,0 +1,167 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+header {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+    min-height: 60vh;
+    background-image: url(https://images.pexels.com/photos/1595244/pexels-photo-1595244.jpeg);
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    padding: 10px 0;
+}
+
+nav .logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav > ul {
+    list-style: none;
+    display: flex;
+    gap: 50px;
+}
+
+nav > ul > li > a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.container {
+    max-width: 1400px;
+    width: 90%;
+    margin: 0px auto;
+    padding: 20px 50px;
+    background-color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.headline {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.headline h2 {
+    font-size: 48px;
+    margin-bottom: 24px;
+}
+
+.btn {
+    display: inline-block;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-headline {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: .5rem;
+    color: #333;
+    background-color: #fff;
+}
+
+.todo-section {
+    margin-top: 5rem;
+    text-align: center;
+}
+
+.todo-section h2 {
+    color: white;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.form-todo {
+    min-height: 5vh;
+    display: flex;
+}
+
+.form-todo input {
+    min-height: 100%;
+}
+
+.form-todo input[type="text"] {
+    width: 80%;
+    border: none;
+    padding: 0 1rem;
+    font-size: 1.2rem;
+}
+
+.form-todo input[type='submit'] {
+    width: 20%;
+    border: none;
+    background-color: red;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.section-signup {
+    margin-top: 5rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 2rem;;
+}
+
+.form-signup {
+    max-width : 800px;
+    width : 95%;
+    text-align: left;
+}
+
+.form-signup label {
+    display: block;
+    font-size: 1.2rem;
+    padding: .5rem 0;
+}
+
+.form-signup input {
+    display: block;
+    width: 100%;
+    padding: .5rem;
+    font-size: 1.2rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-signup input.btn-signup {
+    width: 70%;
+    margin: 1rem auto;
+    padding: .7rem 2rem;
+    font-size: 1.2rem;
+    border: none;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
