@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Newsletter sign-up form with success message</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./main.js" defer></script>
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body class="index-body bg-blue-700">
+
+  <main class="bg-white">
+    <header class="header-main">
+      <img class="mobile-illustration" src="./assets/images/illustration-sign-up-mobile.svg" alt="illustration-sign-up-mobile">
+      <img class = "tablet-illustration" src="./assets/images/illustration-sign-up-tablet.svg" alt="illustration-sign-up-tablet">
+      <img class = "desktop-illustration" src="./assets/images/illustration-sign-up-desktop.svg" alt="illustration-sign-up-desktop">
+    </header>
+    <section class="container">
+      <div class="container-text">
+        <h1 class="text-preset-1 text-blue-800">Stay updated!</h1>
+        <p class="text-preset-2-regular">
+          Join 60,000+ product managers receiving monthly updates on:
+        <ul class="text-preset-2-regular">
+          <div>
+            <img src="./assets/images/icon-list.svg" alt="icon-list">
+            <li>Product discovery and building what matters</li>
+          </div>
+          <div>
+            <img src="./assets/images/icon-list.svg" alt="icon-list">
+            <li>Measuring to ensure updates are a success</li>
+          </div>
+          <div>
+            <img src="./assets/images/icon-list.svg" alt="icon-list">
+            <li>And much more!</li>
+          </div>
+        </ul>
+        </p>
+      </div>
+      <div class="container-form">
+        <form action="" method="post">
+          <div class="input-group text-preset-3 text-blue-800">
+              <div class="label-group">
+                <label for="email">Email address</label>
+                <p id="email-error" class="error-label"></p>
+              </div>
+              <input class="text-preset-2-regular input-box" type="email" name="" id="email" placeholder="email@company.com">
+          </div>
+          <button type="submit" class="submit-group text-preset-2-bold">
+          Subscribe to monthly newsletter
+          </button>
+        </form>
+      </div>
+    </section>
+  </main><em></em>
+</body>
+</html>

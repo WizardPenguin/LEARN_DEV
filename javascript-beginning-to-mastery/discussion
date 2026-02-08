@@ -955,6 +955,11 @@ let elementsByClass = document.getElementsByClassName("myClass");
 // Selecting by Tag Name
 let elementsByTag = document.getElementsByTagName("div");
 
+#### get ElementsByClassName and getElementsByTagName return live HTMLCollections [[ TODO ]]
+// meaning they automatically update when the DOM changes.
+// while getElementById returns a static reference to the element.
+
+
 // Selecting using Query Selector
 let firstElement = document.querySelector(".myClass");
 let allElements = document.querySelectorAll(".myClass");
@@ -965,10 +970,78 @@ elementById.textContent = "New Text";
 
 // Changing HTML content
 elementById.innerHTML = "<strong>Bold Text</strong>";
+textContent property represents the text content of an element and its descendants.
+innerHTML property represents the HTML content of an element as a string, including any child elements and HTML tags.
+
+innerText is similar to textContent, but it takes into account the CSS styles applied to the element, such as visibility and display properties.
+innerText returns the visible text content of an element, while textContent returns all text content, regardless of visibility.
+
+##################### traversing DOM ##################################
+
+
+// Accessing parent element
+let parentElement = elementById.parentNode;
+// Accessing child elements
+let childElements = elementById.children;
+// Accessing sibling elements
+let nextSibling = elementById.nextElementSibling;
+let previousSibling = elementById.previousElementSibling;
+
+
+#### text node vs element node
+In the DOM, there are different types of nodes that represent different parts of the document. Two common types are:
+1. Element nodes: Represent HTML elements like <div>, <p>, etc.
+2. Text nodes: Represent the text content within an element.
+For example, in the HTML <p>Hello World</p>, the <p> tag is an element node, and "Hello World" is a text node that is a child of the <p> element node.
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Page</title>
+  </head>
+  <body>
+    <h1>Hello World</h1>
+    <p>This is a <strong>simple</strong> page.</p>
+  </body>
+</html>
+
+
+## create a sample default tree showing head doesn't take left/right text node but others does
+Document
+│
+├── <!DOCTYPE html>
+│
+└── html  (Element Node)
+    │
+    ├── head  (Element Node)
+    │   │
+    │   └── title  (Element Node)
+    │       │
+    │       └── "My Page"  (Text Node)
+    │
+    └── body  (Element Node)
+        │
+        ├── h1  (Element Node)
+        │   │
+        │   └── "Hello World"  (Text Node)
+        │
+        └── p  (Element Node)
+            │
+            ├── "This is a "  (Text Node)
+            │
+            ├── strong  (Element Node)
+            │   │
+            │   └── "simple"  (Text Node)
+            │
+            └── " page."  (Text Node)
+
 
 // Changing styles
 elementById.style.color = "red";
 elementById.style.fontSize = "20px";
+
+##### style properties can be accessed using camelCase notation
+// e.g., background-color becomes backgroundColor n
 
 // Adding a class
 elementById.classList.add("newClass");
@@ -979,6 +1052,14 @@ elementById.classList.remove("myClass");
 // Toggling a class
 elementById.classList.toggle("activeClass");
 
+// getting and setting attributes
+// Getting an attribute
+let attrValue = elementById.getAttribute("data-custom");
+// Setting an attribute
+elementById.setAttribute("data-custom", "newValue");
+
+
+
 ##### creating and removing elements in DOM
 // Creating a new element
 let newElement = document.createElement("p");
@@ -986,10 +1067,20 @@ newElement.textContent = "This is a new paragraph.";
 
 // Appending the new element to the body
 document.body.appendChild(newElement);  
+## will this new element be added at the end of body ? yes it will be added at the end of body
 
 // Removing an element
 let elementToRemove = document.getElementById("removeMe");
 elementToRemove.parentNode.removeChild(elementToRemove);
+
+##### order of child matters in DOM, how'd we add as sibling, or child in middle
+let referenceElement = document.getElementById("reference");
+let newElement = document.createElement("p");
+newElement.textContent = "Inserted before reference element.";
+referenceElement.parentNode.insertBefore(newElement, referenceElement); // insert before reference element
+
+// insert after reference element
+referenceElement.parentNode.insertBefore(newElement, referenceElement.nextSibling);
 
 ##### event handling in DOM
 // Adding an event listener
@@ -1015,3 +1106,13 @@ this is async JS asynchronous loading of JS file --- executed whenever it is loa
 
 <script defer src="path/to/your/script.js"></script>
 this is defer JS defer loading of JS file --- executed after HTML is parsed
+
+##### important notes 
+querySelector can be used to select any element using CSS selectors, while getElementById, getElementsByClassName, and getElementsByTagName are specific to selecting elements by ID, class, and tag name respectively.
+getElementById returns a single element, while getElementsByClassName and getElementsByTagName return live HTMLCollections, which are array-like objects that automatically update when the DOM changes.
+textContent returns the text content of an element and its descendants, while innerHTML returns the HTML content of an element as a string, including any child elements and HTML tags.
+
+querySelector and querySelectorAll return static NodeLists, which do not update when the DOM changes, while getElementsByClassName and getElementsByTagName return live HTMLCollections that do update when the DOM changes.
+
+# importnt # querySelector can be used on any HTML element
+meaning using it on some element will search for the first matching element within that element's subtree, while using it on document will search the entire document.
