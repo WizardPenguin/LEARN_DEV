@@ -50,6 +50,7 @@ nav > ul > li > a {
     max-width: 1400px;
     width: 90%;
     margin: 0px auto;
+    margin-bottom: 3rem;;
     padding: 20px 50px;
     background-color: #333;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -73,6 +74,8 @@ nav > ul > li > a {
     display: inline-block;
     border: none;
     text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: .5rem;
     cursor: pointer;
 }
 
@@ -80,8 +83,6 @@ nav > ul > li > a {
     font-size: 18px;
     font-weight: bold;
     color: white;
-    padding: 1rem 2rem;
-    border-radius: .5rem;
     color: #333;
     background-color: #fff;
 }
@@ -164,4 +165,32 @@ nav > ul > li > a {
     background-color: red;
     color: white;
     cursor: pointer;
+}
+
+/* ############################ todo list elements ############################ */
+.todo-list {
+    list-style : none;
+    display: flex;
+    flex-direction: column;
+}
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.buttons {
+    text-decoration: none;
+    display: flex;
+    gap: 1rem;
+    color: black;
+}
+
+.buttons .btn {
+    font-weight: bold;
+    font-size: 1rem;
 }

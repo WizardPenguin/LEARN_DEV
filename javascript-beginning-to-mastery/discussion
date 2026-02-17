@@ -983,6 +983,8 @@ innerText returns the visible text content of an element, while textContent retu
 let parentElement = elementById.parentNode;
 // Accessing child elements
 let childElements = elementById.children;
+// getting child nodes (including text nodes)
+let childNodes = elementById.childNodes;
 // Accessing sibling elements
 let nextSibling = elementById.nextElementSibling;
 let previousSibling = elementById.previousElementSibling;
@@ -1049,6 +1051,9 @@ elementById.classList.add("newClass");
 // Removing a class
 elementById.classList.remove("myClass");
 
+// check if class present
+console.log(elementById.classList.contains("myClass")); // false
+
 // Toggling a class
 elementById.classList.toggle("activeClass");
 
@@ -1058,7 +1063,25 @@ let attrValue = elementById.getAttribute("data-custom");
 // Setting an attribute
 elementById.setAttribute("data-custom", "newValue");
 
+##### when and when not to use innerHTML to add new element
+Using innerHTML to add new elements can be convenient, but it has some drawbacks and potential security risks. Here are some guidelines on when to use innerHTML and when to avoid it:
 
+When to use innerHTML:
+1. When you need to add a large block of HTML content at once,
+and you are sure that the content is safe and does not contain any user-generated input
+that could lead to XSS vulnerabilities.
+2. When you want to quickly update the entire content of an element without
+needing to manipulate individual child elements.    
+
+When to avoid innerHTML:
+1. When you need to add or manipulate individual elements within an existing structure,
+as using innerHTML will replace the entire content of the element, which can lead to loss of event
+listeners and other state associated with the existing elements.
+2. When you are dealing with user-generated content or any content that could potentially
+contain malicious code, as using innerHTML can expose your application to Cross-Site Scripting (XSS) attacks
+if the content is not properly sanitized.
+3. When you want to maintain the existing structure and state of the DOM,
+as using innerHTML will remove all existing child nodes
 
 ##### creating and removing elements in DOM
 // Creating a new element
@@ -1067,6 +1090,7 @@ newElement.textContent = "This is a new paragraph.";
 
 // Appending the new element to the body
 document.body.appendChild(newElement);  
+prependChild()
 ## will this new element be added at the end of body ? yes it will be added at the end of body
 
 // Removing an element
@@ -1082,12 +1106,57 @@ referenceElement.parentNode.insertBefore(newElement, referenceElement); // inser
 // insert after reference element
 referenceElement.parentNode.insertBefore(newElement, referenceElement.nextSibling);
 
-##### event handling in DOM
+// replacing an element in DOM
+replaceChild() can be used to replace an existing child element with a new element
+let newElement = document.createElement("p");
+newElement.textContent = "This is a replacement paragraph.";
+let parentElement = document.getElementById("parent");
+let oldElement = document.getElementById("oldChild");
+parentElement.replaceChild(newElement, oldElement); // replace oldChild with newElement
+
+// insert adjacent HTML 
+referenceElement.insertAdjacentHTML("beforebegin", "<p>Inserted before reference element.</p>");
+referenceElement.insertAdjacentHTML("afterend", "<p>Inserted after reference element.</p>");
+
+// clone nodes 
+let clonedElement = referenceElement.cloneNode(true); // true for deep clone
+referenceElement.parentNode.insertBefore(clonedElement, referenceElement.nextSibling); // insert cloned element
+
+// getting dimensions of element
+let element = document.getElementById("myElement");
+let width = element.offsetWidth;
+let height = element.offsetHeight;
+
+invo = element.getBoundingClientRect(); // gives size and position of element relative to viewport
+console.log(invo.top, invo.left, invo.width, invo.height);
+
+
+##### event handling in DOM ##########################
+
+// click element directly into HTML
+<button onclick="alert('Button clicked!')">Click Me</button>
+ 
 // Adding an event listener
 let button = document.getElementById("myButton");
 button.addEventListener("click", function() {
     alert("Button clicked!");
 });
+
+### how event listners work in JS, how they are stored, how they are executed when event occurs
+When an event occurs on an element, the JavaScript engine checks if there are any event listeners attached to that element 
+for the specific event type. If there are, it executes the callback functions associated with those event
+listeners in the order they were added.
+Event listeners are stored in an internal data structure within the JavaScript engine,
+typically as part of the element's properties.
+When an event is triggered, the engine retrieves the relevant event listeners and executes them with
+the appropriate context (the element that triggered the event) and any event-specific data (like event object).
+
+So how this works is when we add event listener using addEventListener, 
+t adds the callback function to the list of event listeners for that element and event type.
+When the event occurs, the engine iterates through the list of event listeners and executes each callback function in order.  
+
+so this keyword inside the event listener callback function refers to the element that triggered the event,
+allowing us to access its properties and methods.
 
 // Removing an event listener
 function handleClick() {
@@ -1095,6 +1164,74 @@ function handleClick() {
 }
 button.addEventListener("click", handleClick);
 button.removeEventListener("click", handleClick);
+
+## key press event
+let input = document.getElementById("myInput");
+input.addEventListener("keypress", function(event) {
+    console.log("Key pressed: " + event.key);
+});
+
+## mouse hover event
+let hoverElement = document.getElementById("hoverElement");
+hoverElement.addEventListener("mouseover", function() {
+    console.log("Mouse over element!");
+});
+hoverElement.addEventListener("mouseout", function() {
+    console.log("Mouse out of element!");
+});
+
+
+##### event object
+When an event occurs, the event listener callback function receives an event object as an argument.
+This event object contains information about the event, such as the type of event, the target element,
+and any additional data related to the event.
+For example, in a click event listener,
+the event object will contain properties like event.type ("click"),
+event.target (the element that was clicked),
+and event.clientX/event.clientY (the coordinates of the mouse pointer when the event occurred).
+
+e.target ====> gives the element that triggered the event,
+while this keyword inside the event listener callback function also refers to the element that triggered the event.
+However, if we use an arrow function as the event listener callback,
+this will not refer to the element that triggered the event, but will instead refer to the lexical scope
+in which the arrow function was defined. In such cases,
+we should use the event object to access the target element using e.target.
+
+##### internal working
+browsers webAPI's keeps all callbacks which are to be triggered when event occurs
+when browser detects an event, it checks the list of callbacks for that event type and executes them in order.
+it pushes them in a queue and when call stack is empty, it pops the callbacks from the queue and executes them.
+Event loop continuously checks the call stack and the event queue, and processes events as they occur.
+
+
+#### event bubbling, capturing and delegation
+Event bubbling is a mechanism in which an event starts from the target element and
+    propagates up through its ancestors in the DOM tree until it reaches the root element. This means that if you click
+    on a child element, the click event will first trigger on that child element and then bubble up to its parent elements.
+Event capturing, on the other hand, is the opposite of event bubbling. In event capturing, the event starts from the root
+    element and propagates down through the ancestors until it reaches the target element. This means that if you click on a child element, the click event will first trigger on the root element and then capture down to the child element.
+Event delegation is a technique that takes advantage of event bubbling to handle events at a higher level in the DOM tree.
+    Instead of attaching event listeners to individual child elements, you can attach a single event listener to a parent
+    element and use event delegation to handle events for its child elements. This can improve performance and reduce memory
+    usage, especially when dealing with a large number of child elements.
+
+
+what is difference in use of bubbling and capturing in event handling ?
+Event bubbling is the default behavior in JavaScript, and it is generally more commonly used than event capturing.
+However, there are certain scenarios where event capturing can be useful:
+1. When you want to handle events at a higher level in the DOM tree before they reach the target element,
+such as for implementing global event handlers or for handling events on dynamically added elements.
+2. When you want to prevent certain events from reaching the target element, such as for implementing custom event
+handling logic or for preventing default behavior on certain elements.
+3. When you want to handle events in a specific order, such as for implementing complex interactions
+between elements that require a specific sequence of event handling.   
+
+if we capture some event on parent, and click on child, will it trigger both capturing and bubbling event listeners ? 
+    yes it will trigger both capturing and bubbling event listeners, but capturing event listeners will be triggered first,
+    followed by bubbling event listeners.
+but then how can we prevent events from reaching target element if we are using capturing ? 
+    we can use event.stopPropagation() method to stop the event from propagating further down the DOM tree,
+    preventing it from reaching the target element and triggering any event listeners attached to it.
 
 
 ##### including external JS file in HTML
@@ -1112,7 +1249,539 @@ querySelector can be used to select any element using CSS selectors, while getEl
 getElementById returns a single element, while getElementsByClassName and getElementsByTagName return live HTMLCollections, which are array-like objects that automatically update when the DOM changes.
 textContent returns the text content of an element and its descendants, while innerHTML returns the HTML content of an element as a string, including any child elements and HTML tags.
 
-querySelector and querySelectorAll return static NodeLists, which do not update when the DOM changes, while getElementsByClassName and getElementsByTagName return live HTMLCollections that do update when the DOM changes.
+querySelector and querySelectorAll return static NodeLists,
+which do not update when the DOM changes, while getElementsByClassName and getElementsByTagName return live HTMLCollections that do update when the DOM changes.
 
-# importnt # querySelector can be used on any HTML element
+# Important # querySelector can be used on any HTML element
 meaning using it on some element will search for the first matching element within that element's subtree, while using it on document will search the entire document.
+
+
+
+
+
+
+##### asynchronous programming in JS
+
+in synchronous, next line is not executed without completion of previous line
+JS is synchronous... and single threaded..
+
+## let's understand setTimeout( function, time in mili seconds )
+this is function provided by web browser 
+web API's takes callback function and add's to callback queue after 1 seconds
+and when JS finds calls tack empty event loop takes function to execute.
+
+so JS won't wait for 1 second, instead this is done by webAPI for us, JS moves forward.
+
+Remember : call stack has Global Execution context, meaning function from call stack taken after GEC done.
+
+let id = setTimeout(()=>console.log("working),1000)
+clearTimeout(id);
+
+
+#### function with callback for success and onError
+let's say we need to perform some task or some checks if pass then call success
+otherwise call onError.
+
+function getTwoNumbersAndAdd(number1, number2, onSuccess, onFailure) {
+  if (typeof number1 === "number" && typeof number2 === "number") {
+    onSuccess(number1, number2);
+  } else {
+    onFailure();
+  }
+}
+
+function addTwoNumbers(num1, num2) {
+  console.log(num1 + num2);
+}
+
+function onFail(){
+    console.log("Wrong data type");
+    console.log("please pass numbers only")
+}
+getTwoNumbersAndAdd(4, 4,addTwoNumbers, onFail);
+
+
+#### callbacks in asynchronous programming...
+
+// callback hell  
+// setTimeout(()=>{
+//   heading1.textContent = "one";
+//   heading1.style.color = "violet";
+//   setTimeout(()=>{
+//     heading2.textContent = "two";
+//     heading2.style.color = "purple";
+//     setTimeout(()=>{
+//       heading3.textContent = "three";
+//       heading3.style.color = "red";
+//       setTimeout(()=>{
+//         heading4.textContent = "four";
+//         heading4.style.color = "pink";
+//         setTimeout(()=>{
+//           heading5.textContent = "five";
+//           heading5.style.color = "green";
+//         },2000)   
+//       },1000)
+//     },2000)
+//   },2000)
+// },1000)
+
+#### let's do things using callbacks so we can stop after failure
+
+function changeText(element, text, color, time, onSuccessCallback, onFailureCallback) {
+  setTimeout(()=>{
+    if(element){
+      element.textContent = text;
+      element.style.color = color;
+      if(onSuccessCallback){
+        onSuccessCallback();
+      }
+    }else{
+      if(onFailureCallback){
+        onFailureCallback();
+      }
+    }
+  },time)
+}
+// pyramid of doom
+changeText(heading1, "one","violet",1000,()=>{
+  changeText(heading2, "two","purple",2000,()=>{
+    changeText(heading3, "three","red",1000,()=>{
+      changeText(heading4, "four","pink",1000,()=>{
+        changeText(heading5, "five","green",2000,()=>{
+          changeText(heading6, "six","blue",1000,()=>{
+            changeText(heading7, "seven","brown",1000,()=>{
+              changeText(heading8, "eight","cyan",1000,()=>{
+                changeText(heading9, "nine","#cda562",1000,()=>{
+                  changeText(heading10, "ten","dca652",1000,()=>{
+                    
+                  },()=>{console.log("Heading10 does not exist")})
+                },()=>{console.log("Heading9 does not exist")})
+              },()=>{console.log("Heading8 does not exist")})
+            },()=>{console.log("Heading7 does not exist")})
+          },()=>{console.log("Heading6 does not exist")})
+        },()=>{console.log("Heading5 does not exist")})
+      },()=>{console.log("Heading4 does not exist")})
+    },()=>{console.log("Heading3 does not exist")})
+  },()=>{console.log("Heading2 does not exist")})
+},()=>{console.log("Heading1 does not exist")})
+
+
+
+Promise -> has status : pending fullfilled etc.., value = value returned on success of failure.
+promise takes a executible function. 
+
+promised_value = new Promise((resolve,reject) => {
+    if(condition fullfilled) {
+        execute
+        resolve("successful");
+    } else {
+        reject("failure");
+    }
+});
+
+// resolve and reject takes some object which is returned while consuming....
+
+now let's consume promise ( js developer creates less promises but consuems a lot of them)
+
+promised_value.them((resolve_returned_value)=>{
+    console.log(`returned value {resolve_value}`);
+}, (reject_value) => {
+    console.log(`returned value {reject_value}`);
+});
+
+###### this is similar to what we created previously....
+##### but here we can have chaining....
+
+promised_value.them((resolve_returned_value)=>{
+    console.log(`returned value {resolve_value}`);
+}).catch((reject_value) => {
+    console.log(`returned value {reject_value}`);
+})
+
+###### let's see how promises are asynchronous task. ( promise is not JS feature instead it's a browser feature)
+
+then,catch are only called after we have completed serial execution of script. that's why it's asynchronous.
+promises are added to microtask qeueues...
+
+***** microtask qeueue is propritised by event loop, so if both have some value first, promises will be resolved..
+
+
+prmise.resolve(val) ==> returns a promise that resolves with value = val.
+
+Promise.reslve(5).then(value => console.log(value))
+
+## then also resolves promise, that way we can chain them...
+
+myPromise()
+    .then((value) => {
+        console.log(value);
+        value += "bar";
+        return value; ----> internally its Promise.resolve(value);
+        ---> if we don't return anything, then js will Promise.resolve(undefined);
+        ---> so value will be undefined.
+    })
+    .then((value) {
+        console.log(value);
+    })
+
+###### let's try to resolve callback hell
+we don't need callbacks function as they will be taken care by then.catch.
+also we need to call resolve when we are satisfied with timeout, otherwise reject 
+
+function changeText(element, text, color, time) {
+    return new Promise(resolve, reject) {
+        setTimeout(()=>{
+            if(element) {
+                element.textColor = text;
+                element.style.color = color;
+                resolve();
+            }
+            else {
+                reject();
+            }
+        }
+    }
+}
+
+changeText(heading1, "one", red, 2000)
+.then( () => changeText(heading2, 'two', blue, 3000)))
+.then( () => changeText(heading3, 'three', blue, 2000)))
+.catch( () => console.log(error))
+
+## if we don't return then we'll return undefined, and timeout will go out for 3 seconds
+## there is not need to wait for timeout, and then will resolve early. and then executed early.
+## so next two won't work as expected.
+
+
+## if any of them fails, then they'll directly goto rejrect.
+
+
+
+
+
+
+######################### AJAX ##############################################
+async JS and XML.
+
+
+// BASIC THEORY 
+
+// AJAX : asynchronous javascript and XML
+
+// HTTP request
+
+// is a set of "web development techniques" 
+// using many web technologies on the "client-side "
+// to create asynchronous web applications. 
+
+
+// With Ajax, web applications can send and retrieve 
+// data from a server asynchronously (in the background) 
+// without interfering with the display and 
+// behaviour of the existing page
+
+// We don't use data in XML format anymore. 
+// we use JSON now. 
+
+
+// we have 3 most common ways to create and send request to server
+// 1.) xmlHTTPRequest (old way of doing)
+// 2.) fetch API (new way of doing)
+// 3.) axios (this is third party library)
+
+
+// json placeholder typicode. ::::: https://jsonplaceholder.typicode.com/
+json vs js object 
+
+json ---> key should always have a double quotes.
+    --> and only supports string, number, boolean, null, object, arrays...
+
+### xhr states : : : 
+UNSENT (0): The object has been created, but open() has not been called.
+OPENED (1): open() has been called, and headers can be set before send().
+HEADERS_RECEIVED (2): send() has been called, and response headers are received.
+LOADING (3): The response body is being received, and partial data may be available.
+DONE (4): The request is complete, whether successfully or due to an error
+
+const URL = "https://jsonplaceholder.typicode.com/posts";
+const xhr = new XMLHttpRequest();
+// console.log(xhr);
+// step1
+// console.log(xhr.readyState);
+xhr.open("GET",URL);
+// console.log(xhr.readyState);
+// xhr.onreadystatechange = function(){
+//     // console.log(xhr.readyState);
+//     if(xhr.readyState === 4){
+//         console.log(xhr)
+//         const response = xhr.response;
+//         const data = JSON.parse(response);
+//         console.log(typeof data);
+//     }
+// }
+
+xhr.onload = function(){
+    const response = xhr.response;
+    const data = JSON.parse(response);
+    console.log(data);
+}
+
+xhr.send();
+
+
+##### doing this using promises.  ######################
+
+const URL = "https://jsonplaceholder.typicode.com/posts";
+
+function sendRequest(method, url) {
+    return new Promise(function(resolve, reject) {
+        const xhr  = new XMLHttpRequest();
+        xhr.open(method, url);
+        xhr.onload = function() {
+            if(xhr.status >= 200 && xhr.status < 300){
+                resolve(xhr.response);
+            }
+            else{
+                reject(new Error("Something Went wrong"));
+            }
+        }
+
+        xhr.onerror = function() {
+            reject(new Error("Something went wrong"));
+        }
+
+        xhr.send();
+    })
+}
+
+sendRequest("GET", URL)
+    .then(response => {
+        const data = JSON.parse(response);
+        // console.log(data)
+        return data;
+    })
+    .then(data=>{
+        const id = data[3].id;
+        return id;
+    })
+    .then(id=>{
+        const url = `${URL}/${id}ssss`;
+        return sendRequest("GET", url);
+    })
+    .then(newResponse => {
+        const newData = JSON.parse(newResponse);
+        console.log(newData);
+    })
+    .catch(error =>{
+        console.log(error);
+    })
+
+
+######################### fetch API #################################
+// sending data using fetch api, we write 2nd argument giving response arguments.
+// getting response is done just passing URL
+// remaining .then works same as both gives response and we have response status etc..
+// try it with jsonplaceholder API's.
+
+
+const URL = "https://jsonplaceholder.typicode.com/postssss";
+
+fetch(URL,{
+    method: 'POST',
+    body: JSON.stringify({
+        title: 'foo',
+        body: 'bar',
+        userId: 1,
+    }),
+    headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+    },
+    })
+    .then(response =>{
+        if(response.ok){
+            return response.json()
+        }else{
+            throw new Error("Something went wrong!!!")
+        }
+    })
+    .then(data =>{
+        console.log(data);
+    })
+    .catch(error =>{
+        console.log("inside catch");
+        console.log(error);
+    })
+
+
+
+##########################3 async keyword ########################
+auto creates promise object with given function as trigger.
+here we can wait to make some things serial and making whole as async will return promise.
+
+
+const getPosts = async() =>{
+    const response = await fetch(URL);
+    if(!response.ok){
+        throw new Error("Something went wrong")
+    }
+    const data = await response.json();
+    return data;
+}
+
+// const myData = getPosts();
+// console.log(myData);
+
+getPosts()
+    .then((myData) => {
+        console.log(myData);
+    })
+    .catch(error =>{
+        console.log("inside catch")
+        console.log(error);
+    })
+
+
+console.log("script end ");
+
+
+
+######################## modules ###################
+
+1. What is a Module?
+A module is a separate JavaScript file that:
+Has its own scope
+Exports variables/functions/classes
+Can import code from other files
+
+
+Modules help with:
+Code organization
+Reusability
+Maintainability
+Avoiding global scope pollution
+
+
+2. Types of JavaScript Modules
+2.1 ES Modules (Modern Standard) ✅
+Native in browsers
+Native in Node.js (modern versions)
+Uses import and export
+This is what you should learn and use.
+
+
+2.2 CommonJS (Older Node.js system)
+
+Uses require() and module.exports
+Still used in many Node projects
+
+3. ES Modules (ESM)
+3.1 Basic File Structure
+You need:
+project/
+ ├── index.html
+ ├── main.js
+ └── utils.js
+
+4. Exporting from a Module
+4.1 Named Export
+utils.js:
+export function add(a, b) {
+    return a + b;
+}
+export const PI = 3.14;
+
+Importing:
+
+import { add, PI } from "./utils.js";
+console.log(add(2, 3));
+console.log(PI);
+
+
+Important:
+
+Must use { }
+Must include .js extension in browser
+
+4.2 Default Export
+utils.js:
+export default function greet(name) {
+    return `Hello ${name}`;
+}
+
+Importing:
+
+import greet from "./utils.js";
+console.log(greet("Raman"));
+
+
+Rules:
+Only ONE default export per file
+No { } when importing default
+
+4.3 Mixed Export
+
+utils.js:
+export const PI = 3.14;
+export default function greet(name) {
+    return `Hello ${name}`;
+}
+
+
+Importing:
+
+import greet, { PI } from "./utils.js";
+
+5. Using Modules in Browser
+
+In HTML:
+
+###############33 <script type="module" src="main.js"></script> ###################
+
+
+Important:
+
+Must use type="module"
+Works only when served through a server (not file:// in many browsers)
+You can use:
+
+Live Server (VS Code)
+Node http-server
+Any local server
+
+6. Module Scope Rules
+
+Inside modules:
+
+var, let, const are NOT global
+this is undefined at top level
+Code runs in strict mode automatically
+
+Example:
+
+var x = 10;
+This does NOT attach to window.
+
+7. Renaming Imports
+
+You can rename while importing:
+import { add as sum } from "./utils.js";
+
+
+Now use:
+
+sum(2, 3);
+
+8. Import All
+import * as utils from "./utils.js";
+
+console.log(utils.add(2, 3));
+console.log(utils.PI);
+
+9. Dynamic Import (Lazy Loading)
+
+Used when you want to load module only when needed.
+
+button.addEventListener("click", async () => {
+    const module = await import("./utils.js");
+    console.log(module.add(2, 3));
+});
