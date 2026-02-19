@@ -1,0 +1,459 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/* ? check why html used */
+html {
+    font-size: 16px;
+    font-family: "Rubik", sans-serif;
+}
+
+:root {
+    /* Neutral */
+    --white: #ffffff;
+    --black: #000000;
+
+    /* Navy */
+    --navy-950: #0e1323;
+    --navy-900: #1c204b;
+    --navy-800: #33397a;
+    --navy-200: #bbc0ff;
+
+    /* Accent */
+    --orange-300: #ff8b64;
+    /* Purple */
+    --purple-700: #7335d2;
+    --purple-600: #5747ea;
+    --purple-500: #7078c9;
+
+    /* Blue */
+    --blue-300: #55c2e6;
+
+    /* Pink */
+    --pink-400: #ff5e7d;
+
+    /* Green */
+    --green-400: #4acf82;
+
+    /* Yellow */
+    --yellow-300: #f1c75b;
+
+    /* Grey */
+    --grey-200: #d8d8d8;
+}
+
+.bg-white {
+    background-color: var(--white);
+}
+
+.bg-black {
+    background-color: var(--black);
+}
+
+.bg-navy-950 {
+    background-color: var(--navy-950);
+}
+
+.bg-navy-900 {
+    background-color: var(--navy-900);
+}
+
+.bg-navy-800 {
+    background-color: var(--navy-800);
+}
+
+.bg-orange {
+    background-color: var(--orange-300);
+}
+
+.bg-purple-700 {
+    background-color: var(--purple-700);
+}
+
+.bg-purple-600 {
+    background-color: var(--purple-600);
+}
+
+.bg-purple-500 {
+    background-color: var(--purple-500);
+}
+
+.bg-blue {
+    background-color: var(--blue-300);
+}
+
+.bg-pink {
+    background-color: var(--pink-400);
+}
+
+.bg-green {
+    background-color: var(--green-400);
+}
+
+.bg-yellow {
+    background-color: var(--yellow-300);
+}
+
+.bg-grey {
+    background-color: var(--grey-200);
+}
+
+.text-white {
+    color: var(--white);
+}
+
+.text-navy-light {
+    color: var(--navy-200);
+}
+
+.text-black {
+    color: var(--black);
+}
+
+.text-1 {
+    font-size: 56px;
+    line-height: 66px;
+    font-weight: 300;
+    /* Light */
+}
+
+.text-2 {
+    font-size: 2.5rem;
+    line-height: 47px;
+    font-weight: 300;
+}
+
+.text-3 {
+    font-size: 2rem;
+    line-height: 38px;
+    font-weight: 300;
+}
+
+.text-4 {
+    font-size: 1.5rem;
+    line-height: 28px;
+    font-weight: 300;
+}
+
+.text-5 {
+    font-size: 1.225rem;
+    line-height: 21px;
+    font-weight: 500;
+    /* Medium */
+}
+
+.text-6 {
+    font-size: 1rem;
+    line-height: 18px;
+    font-weight: 400;
+    /* Regular */
+}
+
+:root {
+    --space-0: 0px;
+    --space-100: 8px;
+    --space-200: 16px;
+    --space-300: 24px;
+    --space-400: 32px;
+    --space-500: 40px;
+    --space-600: 48px;
+}
+
+.m-0 {
+    margin: var(--space-0);
+}
+
+.m-100 {
+    margin: var(--space-100);
+}
+
+.m-200 {
+    margin: var(--space-200);
+}
+
+.m-300 {
+    margin: var(--space-300);
+}
+
+.m-400 {
+    margin: var(--space-400);
+}
+
+.m-500 {
+    margin: var(--space-500);
+}
+
+.p-0 {
+    padding: var(--space-0);
+}
+
+.p-100 {
+    padding: var(--space-100);
+}
+
+.p-200 {
+    padding: var(--space-200);
+}
+
+.p-300 {
+    padding: var(--space-300);
+}
+
+.p-400 {
+    padding: var(--space-400);
+}
+
+.p-500 {
+    padding: var(--space-500);
+}
+
+
+/* ######################################layout###########################################
+### dashboard 
+
+---- profile-card
+--------- profile
+--------- stat
+
+---- profile-stat
+--------- card-container card-work/.....
+------------ card
+--------------- card-about
+--------------- card-stat
+--------------- card-prev-stat 
+*/
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard {
+    max-width: 90%;
+    width: 350px;
+    margin-block: 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.profile-card {
+    width: 100%;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--navy-900);
+}
+
+.profile {
+    background-color: var(--purple-600);
+    display: flex;
+    justify-content: left;
+    border-radius: 1rem;
+}
+
+.profile img {
+    width: 4rem;
+    height: 4rem;
+    margin-inline-end: 1.5rem;
+    border: 4px solid var(--white);
+    border-radius: 12rem;
+}
+
+.profile_text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.stat {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    padding-block: var(--space-300);
+}
+
+button {
+    background: none;
+    outline: none;
+    border: none;
+    color: var(--purple-500);
+}
+
+.stat .active {
+    color: white;
+}
+
+/* 
+---- profile-stat
+--------- card-container card-work/.....
+------------ card
+--------------- card-about
+--------------- card-stat
+--------------- card-prev-stat  
+*/
+
+.profile-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.card-container {
+    border-radius: 1rem;
+    padding-block-start: var(--space-600);
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-300);
+    gap: var(--space-200);
+    background-color: var(--navy-900);
+    border-radius: 1rem;
+}
+
+.card-about {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-about h3 {
+    font-size: 1.125rem;
+    font-weight: 500;
+}
+
+.card-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-current-stat h2 {
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.card-prev-stat {
+    font-size: .925rem;
+    font-weight: 400;
+    color: var(--navy-200);
+}
+
+/* #################### cards personal properties ######################## */
+
+.card-work {
+    background-color: var(--orange-300);
+    background-image: url("./images/icon-work.svg");
+    background-repeat: no-repeat;
+    background-position: top -10px right 15px;
+}
+
+.card-play {
+    background-color: var(--blue-300);
+    background-image: url("./images/icon-play.svg");
+    background-repeat: no-repeat;
+    background-position: top -10px right 15px;
+}
+
+.card-study {
+    background-color: var(--pink-400);
+    background-image: url("./images/icon-study.svg");
+    background-repeat: no-repeat;
+    background-position: top -10px right 15px;
+}
+
+.card-exercise {
+    background-color: var(--green-400);
+    background-image: url("./images/icon-exercise.svg");
+    background-repeat: no-repeat;
+    background-position: top -10px right 15px;
+}
+
+.card-social {
+    background-color: var(--purple-700);
+    background-image: url("./images/icon-social.svg");
+    background-repeat: no-repeat;
+    background-position: top -10px right 15px;
+}
+
+.card-self-care {
+    background-color: var(--yellow-300);
+    background-image: url("./images/icon-self-care.svg");
+    background-repeat: no-repeat;
+    background-position: top -10px right 15px;
+}
+
+
+@media (min-width: 768px) {
+    .dashboard {
+        width: 612px;
+    }
+
+    .profile-stat {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card-stat {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .card-current-stat h2 {
+        font-size: 3.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .dashboard {
+        width: 1110px;
+        height: 520px;
+        display: grid;
+        grid-template-columns: 255px 1fr;
+        gap: 2rem;
+    }
+    .profile-card {
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 7fr 3fr;
+    }
+    .profile {
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    .profile img {
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+
+    .profile h1 {
+        font-size: 2.5rem;
+        line-height: 2.75rem;
+    }
+    .stat {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding-inline-start: 2rem;
+    }
+
+    .card-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+}

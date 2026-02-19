@@ -1785,3 +1785,116 @@ button.addEventListener("click", async () => {
     const module = await import("./utils.js");
     console.log(module.add(2, 3));
 });
+
+
+######################### debouncing ######################################
+
+Debouncing – Complete Crisp Notes
+1. What is Debouncing?
+Debouncing is a technique to limit how often a function executes.
+It ensures:
+Function runs only after a delay
+If triggered again before delay ends → timer resets
+Real Example
+Search input
+Window resize
+Scroll events
+Instead of calling API on every keystroke, wait 300ms after user stops typing.
+
+2. Basic Debounce Implementation
+function debounce(fn, delay) {
+    let timer;
+    return function (...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            fn.apply(this, args);
+        }, delay);
+    };
+}
+
+3. What is a Decorated Function?
+A decorator function:
+Takes a function as input
+Returns a new modified function
+It "wraps" original function with extra behavior.
+
+Example:
+function decorator(fn) {
+    return function () {
+        console.log("Before");
+        fn();
+        console.log("After");
+    };
+}
+
+Here:
+fn → original function
+Returned function → decorated function
+Debounce is a decorator.
+
+4. What is a Rest Parameter?
+Syntax:
+function example(...args) {
+    console.log(args);
+}
+...args collects all arguments into an array
+Allows flexible argument passing
+
+In debounce:
+return function (...args)
+This ensures decorated function can accept ANY number of arguments.
+
+5. Why Use apply(this, args)?
+Problem:
+When wrapping a function, we may lose original this.
+Solution:
+Use:
+fn.apply(this, args);
+Preserves this
+Passes arguments array properly
+
+Alternative:
+fn.call(this, ...args);
+
+6. What is Closure in Debounce?
+Debounce works because of closure.
+let timer;
+timer persists between calls
+Stored in outer function scope
+Inner function remembers it
+This allows:
+Clearing previous timeout
+Setting new one
+
+7. Execution Flow
+If delay = 300ms
+User types:
+
+t  → timer starts
+te → timer reset
+tes → timer reset
+test → timer reset
+(wait 300ms)
+→ function runs once
+
+8. Leading vs Trailing Debounce
+Trailing (default)
+Runs AFTER delay ends.
+Leading
+Runs immediately, then blocks until delay ends.
+Example (leading):
+
+function debounce(fn, delay) {
+    let timer;
+    return function (...args) {
+        if (!timer) {
+            fn.apply(this, args);
+        }
+
+        clearTimeout(timer);
+
+        timer = setTimeout(() => {
+            timer = null;
+        }, delay);
+    };
+}
