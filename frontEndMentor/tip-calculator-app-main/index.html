@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="./main.js" defer></script>
+  <title>Frontend Mentor | Tip calculator app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <img src="./images/logo.svg" alt="logo" class="header">
+    <div class="calculator">
+      <section class="inputs">
+        <div class="input-box bill-box">
+          <label for="bill" class="input-label">Bill</label>
+          <input type="text" class="input-input" id="bill" placeholder="0">
+        </div>
+        <div class="tip">
+          <lable class="input-label">Select Tip &percnt;</lable>
+          <div class="button-collection">
+            <button class="btn">5&percnt;</button>
+            <button class="btn">10&percnt;</button>
+            <button class="btn">15&percnt;</button>
+            <button class="btn">25&percnt;</button>
+            <button class="btn">50&percnt;</button>
+            <input type="text" class="input-input" id="custom-tip" placeholder="Custom">
+          </div>
+        </div>
+        <div class="input-box people-box">
+          <div class="lable-box">
+            <label for="people" class="input-label">Number of People</label>
+            <label for="people" class="input-label error no-error">Can't be zero</label>
+          </div>
+          <input type="text" class="input-input" id="people" placeholder="0">
+        </div>
+      </section>
+      <section class="output">
+        <div class="output-container">
+                  <div class="output-box tip-box">
+          <div class="output-text-box">
+            <h2>Tip Amount</h2>
+            <p>&Backslash;person</p>
+          </div>
+          <h1 class="output-value">&dollar;0.00</h1>
+        </div>
+        <div class="output-box total-box">
+          <div class="output-text-box">
+            <h2>Total </h2>
+            <p>&Backslash;person</p>
+          </div>
+          <h1 class="output-value">&dollar;0.00</h1>
+        </div>
+        </div>
+        <button class="btn btn-disable">RESET</button>
+      </section>
+    </div>
+  </main>
+
+  <div class="extra">
+    Bill
+
+    Select Tip %
+    5%
+    10%
+    15%
+    25%
+    50%
+    Custom
+
+    Number of People
+
+    Tip Amount
+    / person
+
+    Total
+    / person
+
+    Reset
+
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+      Coded by <a href="#">Your Name Here</a>.
+    </div>
+  </div>
+</body>
+
+</html>

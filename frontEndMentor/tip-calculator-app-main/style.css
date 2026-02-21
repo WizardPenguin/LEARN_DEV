@@ -1,0 +1,444 @@
+/* ######################### styling #################### */
+/* components 
+input-box 
+  input-label
+  input-input 
+
+input-box has property for distance between input and label
+input-lable has it's own properties 
+
+input-input has it's own properties 
+   input-input has properties for fix input ( disabled )  ( coloring changes )
+   and variable input (coloring changes)
+   and error case.
+   and hover or when we enter into input case
+
+forground-background coloring is separate... */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 16px;
+}
+
+:root {
+    /* Primary */
+    --strong-cyan: hsl(172, 67%, 45%);
+
+    /* Neutral */
+    --white: #ffffff;
+    --black: #000000;
+
+    --green-900: hsl(183, 100%, 15%);
+    --gray-500: hsl(186, 14%, 43%);
+    --gray-400: hsl(184, 14%, 56%);
+    --gray-800: hsl(185, 41%, 84%);
+    --gray-300: hsl(184, 19%, 68%);
+    --gray-200: hsl(185, 41%, 84%);
+    --gray-50: hsl(189, 47%, 97%);
+    --gray-600: hsl(180, 25%, 32%);
+    /* Accent */
+    --orange-400: hsl(13, 70%, 60%);
+    --green-400: hsl(172, 67%, 45%);
+    --green-800 : hsl(172, 85%, 21%);
+    --green-200 : hsl(173,61%,77%);
+    --green-750: hsl(183,79%,24%);
+}
+
+.bg-white {
+    background-color: var(--white);
+}
+
+.bg-black {
+    background-color: var(--black);
+}
+
+.bg-gray-900 {
+    background-color: var(--gray-900);
+}
+
+.bg-gray-800 {
+    background-color: var(--gray-800);
+}
+
+.bg-gray-750 {
+    background-color: var(--gray-750);
+}
+
+.bg-gray-500 {
+    background-color: var(--gray-500);
+}
+
+.bg-gray-300 {
+    background-color: var(--gray-300);
+}
+
+.bg-gray-200 {
+    background-color: var(--gray-200);
+}
+
+.bg-gray-50 {
+    background-color: var(--gray-50);
+}
+
+.bg-cyan {
+    background-color: var(--strong-cyan);
+}
+
+.bg-orange {
+    background-color: var(--orange-400);
+}
+
+.text-white {
+    color: var(--white);
+}
+
+.text-black {
+    color: var(--black);
+}
+
+.text-gray-900 {
+    color: var(--gray-900);
+}
+
+.text-gray-800 {
+    color: var(--gray-800);
+}
+
+.text-gray-750 {
+    color: var(--gray-750);
+}
+
+.text-cyan {
+    color: var(--strong-cyan);
+}
+
+.text-orange {
+    color: var(--orange-400);
+}
+
+body {
+    font-family: "Space Mono", monospace;
+}
+
+/* Text Preset 1 */
+.text-1 {
+    font-size: 48px;
+    line-height: 71px;
+    letter-spacing: -1px;
+    font-weight: 700;
+}
+
+/* Text Preset 2 */
+.text-2 {
+    font-size: 32px;
+    line-height: 47px;
+    letter-spacing: -0.67px;
+    font-weight: 700;
+}
+
+/* Text Preset 3 */
+.text-3 {
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: 0px;
+    font-weight: 700;
+}
+
+/* Text Preset 4 */
+.text-4 {
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: 0px;
+    font-weight: 700;
+}
+
+/* Text Preset 5 */
+.text-5 {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0px;
+    font-weight: 700;
+}
+
+/* Text Preset 6 */
+.text-6 {
+    font-size: 13px;
+    line-height: 19px;
+    letter-spacing: 0px;
+    font-weight: 700;
+}
+
+:root {
+    --spacing-0: 0px;
+    --spacing-100: 8px;
+    --spacing-200: 16px;
+    --spacing-300: 24px;
+    --spacing-400: 32px;
+    --spacing-600: 48px;
+    --spacing-1000: 80px;
+    --spacing-1200: 96px;
+    --spacing-1500: 120px;
+    --spacing-1600: 128px;
+}
+
+.extra {
+    display: none;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ######################## input block ##########################s */
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-label {
+    display: block;
+    width: 100%;
+    text-align: left;
+    font-size: 1rem;
+    color: var(--gray-500);
+    font-weight: 600;
+    padding-block-end: .7rem;
+}
+
+.input-input {
+    width: 100%;
+    padding: 1rem;
+    text-align: right;
+    border: none;
+    background-color: var(--gray-50);
+    color: var(--green-900);
+    font-weight: 600;
+    font-size: 1.5rem;
+    border-radius: .5rem;
+}
+
+input,
+input:focus,
+input:hover {
+    border: none;
+    outline: none;
+}
+
+input.input-input.error {
+    border: 3px solid var(--orange-400);
+}
+
+input.input-input:focus {
+    border: none;
+    border: 3px solid var(--green-400);
+}
+
+input.input-input::placeholder {
+    color: var(--gray-300);
+}
+
+input.input-input {
+    /* background-image: url(./images/icon-dollar.svg); */
+    background-repeat: no-repeat;
+    background-position: 1.2rem 1.2rem;
+}
+
+#bill {
+    background-image: url(./images/icon-dollar.svg);
+}
+
+#people {
+    background-image: url(./images/icon-person.svg);
+}
+
+label.error {
+    color: var(--orange-400);
+}
+
+.no-error {
+    display: none;
+}
+
+/* ########################## button block */
+
+button, button:hover {
+    outline: none;
+    border: none;
+    background: none;
+}
+
+button.btn {
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    background-color: var(--green-900);
+    border-radius: .5rem;
+    color: var(--white);
+    font-weight: 600;
+}
+
+button.btn:hover{
+    background-color: var(--green-200);
+    color: var(--green-900);
+}
+
+button.btn.clicked {
+    background-color: var(--green-400);
+    color: var(--green-900);
+}
+
+/* if it's not disabled it should look like this as default*/
+.output .btn {
+    background-color: var(--green-400);
+    color: var(--green-900);
+}
+
+.output .btn-disable {
+    background-color: var(--green-750);
+    color: var(--green-800);
+}
+
+/* ############################## output box */
+
+.output-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.lable-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.lable-box .error {
+    text-align: right;
+}
+
+.output-box h2 {
+    font-size: 1.225rem;
+    font-weight: 500;
+    color: var(--white);
+}
+
+.output-box p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--gray-400);
+}
+
+.output-value {
+    font-size: 2rem;
+    color: var(--green-400);
+}
+
+/* ############################### Main section ######################### */
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--gray-200);
+}
+
+.container {
+    max-width: 30rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.header {
+    margin-block : 3rem;
+    display: inline-block;
+}
+
+.calculator {
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: white;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.button-collection {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 1rem;
+}
+
+.output {
+    background-color: var(--green-900);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.output-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+        margin-inline-end: 2rem;
+        padding: 3rem 5rem;
+    }
+    .calculator {
+        padding: 3rem 5rem;
+    }
+    .button-collection {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 1rem;
+    }
+}
+
+@media (min-width: 980px) {
+    .output-box {
+        padding-block-start: 1rem;
+    }
+    .container {
+        max-width: 1100px;
+        width: 100%;
+    }
+    .calculator {
+        padding: 2rem;
+        flex-direction: row;
+        gap : 2.5rem
+    }
+    .inputs {
+        width: 50%;
+    }
+    .output {
+        width: 50%;
+    }
+}
