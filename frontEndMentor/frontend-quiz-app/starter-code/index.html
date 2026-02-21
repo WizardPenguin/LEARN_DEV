@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="./main.js" defer></script>
+  <title>Frontend Mentor | Frontend quiz app</title>
+
+</head>
+
+<body class="dark">
+  <main class="container">
+    <nav class="nav-bar">
+      <div class="item-box hide">
+        <div class="item-image"></div>
+        <h2 class="item-text">Accessibility</h2>
+      </div>
+      <div class="nav-toggler">
+        <img src="./assets/images/icon-sun-dark.svg" alt="icon-sun-dark">
+        <div class="nav-button">
+          <div class="circles">
+            <div class="circle bg-white"></div>
+            <div class="circle"></div>
+          </div>
+        </div>
+        <img src="./assets/images/icon-moon-dark.svg" alt="icon-moon-dark">
+      </div>
+    </nav>
+    <section class="main">
+      <section class="main-page">
+        <div class="heading">Welcome to the</div>
+        <div class="subheading">Frontend Quiz!</div>
+        <div class="option-text">Pick a subject to get started.</div>
+        <div class="options">
+          <div class="item-box">
+            <div class="item-image"></div>
+            <h2 class="item-text">HTML</h2>
+          </div>
+          <div class="item-box">
+            <div class="item-image"></div>
+            <h2 class="item-text">CSS</h2>
+          </div>
+          <div class="item-box">
+            <div class="item-image"></div>
+            <h2 class="item-text">JavaScript</h2>
+          </div>
+          <div class="item-box">
+            <div class="item-image"></div>
+            <h2 class="item-text">Accessibility</h2>
+          </div>
+        </div>
+      </section>
+      <section class="quiz-page remove">
+        <div class="option-text question">
+          Question <span class="question-nummber">0</span> of 10
+        </div>
+        <div class="question-text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, cupiditate!
+        </div>
+        <div class="bar">
+          <div class="completion"></div>
+        </div>
+        <div class="options">
+          <div class="item-box correct">
+            <div class="item-image">A</div>
+            <h2 class="item-text">option 1</h2>
+          </div>
+          <div class="item-box incorrect">
+            <div class="item-image">B</div>
+            <h2 class="item-text">optoin 2</h2>
+          </div>
+          <div class="item-box correct-icon">
+            <div class="item-image">C</div>
+            <h2 class="item-text">option 3</h2>
+          </div>
+          <div class="item-box">
+            <div class="item-image">D</div>
+            <h2 class="item-text">option 4</h2>
+          </div>
+        </div>
+        <button class="btn submit">Submit answer</button>
+        <div class="error-text">
+          Please select an answer
+        </div>
+      </section>
+      <section class="result-page remove">
+        <div class="heading">Quiz completed</div>
+        <div class="subheading">You scored...</div>
+        <div class="options result">
+          <div class="item-box">
+            <div class="item">
+              <div class="item-image"></div>
+              <h2 class="item-text">Accessibility</h2>
+            </div>
+            <div class="correct-count">8</div>
+            <div class="option-text total">
+              out of 10
+            </div>
+          </div>
+        </div>
+        <button class="btn play-again">Play Again</button>
+      </section>
+    </section>
+  </main>
+</body>
+
+</html>
+
+<!-- <div class="extra"> -->
+<!-- Quiz menu start -->
+<!-- 
+    Welcome to the Frontend Quiz!
+    Pick a subject to get started.
+
+    HTML
+    CSS
+    JavaScript
+    Accessibility -->
+
+<!-- Quiz menu end -->
+
+<!-- Quiz question start -->
+
+<!-- Question number of 10 -->
+
+<!-- A
+    B
+    C
+    D
+
+    Submit answer -->
+
+<!-- Quiz question end -->
+
+<!-- Quiz completed start -->
+
+<!-- Quiz completed
+    You scored...
+
+    score out of 10 -->
+
+<!-- Quiz completed end -->
+<!-- </div> -->
